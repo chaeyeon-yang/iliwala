@@ -11,8 +11,20 @@ public class MemberController {
     String dir = "member/";
 
     @RequestMapping("/login")
-    public String main(Model model) {
+    public String login(Model model) {
         model.addAttribute("center",dir+"login");
+        return "index";
+    }
+
+    @RequestMapping("/join")
+    public String join(Model model) {
+        model.addAttribute("center",dir+"join");
+        return "index";
+    }
+
+    @RequestMapping("/join2")
+    public String join2(Model model) {
+        model.addAttribute("center",dir+"join2");
         return "index";
     }
 }
