@@ -21,10 +21,13 @@ public class MemberController {
         model.addAttribute("center",dir+"join");
         return "index";
     }
+<<<<<<< HEAD
 
     @RequestMapping("/join2")
     public String join2(Model model) {
         model.addAttribute("center",dir+"join2");
         return "index";
     }
+=======
+>>>>>>> origin/main
 }
