@@ -50,7 +50,7 @@
   <div class="topMenu d-none d-md-block container">
     <span class="home"><a href="index.html">HOME</a></span>
     <span><a href="<c:url value="/member/login"/>">LOGIN</a></span>
-    <span><a href="./member/join.html">JOIN</a></span>
+    <span><a href="<c:url value="/member/join"/>">JOIN</a></span>
     <span><a href="./company/company03.html">CONTACT US</a></span>
   </div>
 </div>
