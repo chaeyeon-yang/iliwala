@@ -37,6 +37,16 @@
     let join2 = {
       init: function () {
         $("form #registerBtn").click(() => {
+          let id = $("#memberId").val();
+          let pw = $("#memberPw").val();
+          let name = $("#memberName").val();
+          let email = $("#memberEmail").val();
+          let emailReceive = $("input[name='memberEmailReceive']:checked").val();
+          let pwQuestion = $("select[name='memberPwQuestion'] option:selected").val();
+          let pwAnswer = $("#memberPwAnswer").val();
+          let gender = $("input[name='memberGender']:checked").val();
+          let birthDate = $("#memberBirthDate").val();
+
           msg = null;
           if (!pwCheck()) {
             msg = "비밀번호는 4자리 이상만 가능합니다."
@@ -44,6 +54,27 @@
           if (!pwReCheck()) {
             msg = "암호가 일치하지 않습니다. 다시 입력해주세요."
           }
+
+          if (!id) {
+            msg = "아이디를 입력해야 합니다.";
+          } else if (!pw) {
+            msg = "비밀번호를 입력해야 합니다.";
+          } else if (!name) {
+            msg = "이름을 입력해야 합니다.";
+          } else if (!email) {
+            msg = "이메일을 입력해야 합니다.";
+          } else if (!emailReceive) {
+            msg = "이메일 수신여부를 선택해야 합니다.";
+          } else if (pwQuestion == 0) {
+            msg = "비밀번호 확인시 질문을 선택해야 합니다.";
+          } else if (!pwAnswer) {
+            msg = "비밀번호 확인시 답변을 입력해야 합니다.";
+          } else if (!gender) {
+            msg = "성별을 선택해야 합니다.";
+          } else if (!birthDate) {
+            msg = "생년월일을 입력해야 합니다.";
+          }
+
           if (msg) {
             alert(msg);
           }
@@ -120,13 +151,13 @@
         </tr>
         <tr>
           <td>이메일</td>
-          <td><input type="text" name="memberEmail" id="memberEmail">@<input type="text"></td>
+          <td><input type="text" name="memberEmail" id="memberEmail"></td>
         </tr>
         <tr>
           <td>이메일 수신여부</td>
           <td>
-            <input type="radio" name="memberEmailReceive" class="memberEmailReceive">수신
-            <input type="radio" name="memberEmailReceive" class="memberEmailReceive">수신안함
+            <input type="radio" name="memberEmailReceive" class="memberEmailReceive" value="1">수신
+            <input type="radio" name="memberEmailReceive" class="memberEmailReceive" value="0">수신안함
           </td>
         </tr>
         <tr>
@@ -149,16 +180,14 @@
         <tr>
           <td>성별</td>
           <td>
-            <input type="radio" name="memberGender" class="memberGender">남자
-            <input type="radio" name="memberGender" class="memberGender">여자
+            <input type="radio" name="memberGender" class="memberGender" value="male">남자
+            <input type="radio" name="memberGender" class="memberGender" value="female">여자
           </td>
         </tr>
         <tr>
           <td>생년월일</td>
           <td>
-            <select name="year" id="year" title="년도" class="birthdaySelect"></select>
-            <select name="month" id="month" title="월" class="birthdaySelect"></select>
-            <select name="day" id="day" title="일" class="birthdaySelect"></select>
+            <input type="date" name="memberBirthDate" id="memberBirthDate" />
           </td>
         </tr>
       </table>
