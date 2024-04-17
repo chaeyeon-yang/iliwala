@@ -8,6 +8,20 @@
 </head>
 
 <script>
+    function idCheck() {
+    let id = $("#memberId").val();
+    $.ajax({
+      url: "<c:url value='/member/checkIdDuplicate' />",
+      data: {"id": id},
+      success: (data) => {
+        let msg = "아이디 사용가능합니다."
+        if (data == 0) {
+          msg = "아이디가 중복됩니다."
+        }
+        alert(msg);
+      }
+    });
+  }
 </script>
 
 <!-- 메인 -->
@@ -52,7 +66,7 @@
       <td>아이디</td>
       <td>
         <input type="text" name="memberId" id="memberId">
-        <img src="<c:url value="/img/member/btn_iddupl.gif" />" onclick="">
+        <img src="<c:url value="/img/member/btn_iddupl.gif" />" onclick="idCheck()">
         (영문 소문자, 숫자로 4~16자)
       </td>
     </tr>
