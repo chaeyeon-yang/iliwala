@@ -27,6 +27,12 @@
       let pw = $("#memberPw").val();
       return pw.length >= 4
     }
+
+    function pwReCheck() {
+      let pw = $("#memberPw").val();
+      let pwRe = $("#memberPwRe").val()
+      return pw === pwRe;
+    }
     
     let join2 = {
       init: function () {
@@ -34,6 +40,9 @@
           msg = null;
           if (!pwCheck()) {
             msg = "비밀번호는 4자리 이상만 가능합니다."
+          }
+          if (!pwReCheck()) {
+            msg = "암호가 일치하지 않습니다. 다시 입력해주세요."
           }
           if (msg) {
             alert(msg);
@@ -103,7 +112,7 @@
         </tr>
         <tr>
           <td>비밀번호 확인</td>
-          <td><input type="password" id="checkMemberPw"></td>
+          <td><input type="password" id="memberPwRe"></td>
         </tr>
         <tr>
           <td>이름</td>
