@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="<c:url value="/css/member/login.css"/>">
 </head>
 <script>
+    let login = {
+        init: function () {
+            $("#loginForm #loginBtn").click(() => {
 
+            })
+
+        }
+    }
+    $(function () {
+        login.init();
+    })
 </script>
 
 <!-- 메인 -->
@@ -27,12 +37,12 @@
 </div>
 
 <!-- 로그인 -->
-<div class="loginForm container text-center">
+<div class="container text-center">
     <div class="loginSection1">
         <div><h3>로그인</h3></div>
         <div><p>The design and maintenance are excellent.</p></div>
     </div>
-    <div class="loginMain">
+    <form class="loginMain" id="loginForm">
         <table class="main1">
             <tr>
                 <td>
@@ -44,7 +54,8 @@
                     <input type="password" name="loginPW">
                 </td>
                 <td>
-                    <input class="loginImg" type="image" src="<c:url value="/img/member/btn_login.gif" />">
+                    <button id="loginBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_login.gif" />'); background-size: cover; width: 70px;  height: 48px;
+                            border: none;"></button>
                 </td>
             </tr>
         </table>
@@ -68,5 +79,5 @@
                 </tr>
             </table>
         </div>
-    </div>
+    </form>
 </div>
