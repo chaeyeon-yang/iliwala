@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="<c:url value="/css/community/community.css"/>">
 
 <script>
-    let board = {
+    let notice = {
         init: function () {
         }
     };
     $(function () {
-        board.init();
+        notice.init();
     });
 </script>
 <!-- 공지사항 -->
@@ -27,31 +27,13 @@
                 <th>제목</th>
                 <th>작성일</th>
             </tr>
-            <tr onclick="window.location.href='community01_1.html?no=5'">
-                <td>5</td>
-                <td>새로운 공지사항을 알려드립니다.</td>
-                <td>2019-06-19</td>
-            </tr>
-            <tr onclick="window.location.href='community01_1.html?no=4'">
-                <td>4</td>
-                <td>새로운 공지사항을 알려드립니다.</td>
-                <td>2019-06-19</td>
-            </tr>
-            <tr onclick="window.location.href='community01_1.html?no=3'">
-                <td>3</td>
-                <td>새로운 공지사항을 알려드립니다.</td>
-                <td>2019-06-19</td>
-            </tr>
-            <tr onclick="window.location.href='community01_1.html?no=2'">
-                <td>2</td>
-                <td>새로운 공지사항을 알려드립니다.</td>
-                <td>2019-06-19</td>
-            </tr>
-            <tr onclick="window.location.href='community01_1.html?no=1'">
-                <td>1</td>
-                <td>새로운 공지사항을 알려드립니다.</td>
-                <td>2019-06-19</td>
-            </tr>
+            <c:forEach var="n" items="${notices}" varStatus="loop">
+                <tr>
+                    <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${loop.index + 1}</a></td>
+                    <td>${n.noticeTitle}</td>
+                    <td>${n.noticeDate}</td>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 </div>
@@ -72,7 +54,7 @@
                 <input type="text">
             </td>
             <td>
-                <input type="image" src="../img/community/search.gif">
+                <input type="image" src="<c:url value="/img/community/search.gif"/>">
             </td>
         </tr>
     </table>
