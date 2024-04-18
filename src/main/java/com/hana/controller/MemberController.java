@@ -25,14 +25,22 @@ public class MemberController {
         return "index";
     }
 
+    @ResponseBody
     @RequestMapping("/loginimpl")
-    public String loginimpl(Model model,@RequestParam("id") String id,HttpSession httpSession) {
-        String userId = httpSession.getId();
-        if (id.equals(userId)) {
-            httpSession.setAttribute("id", id);
+    public Integer loginimpl(Model model,@RequestParam("memberId") String id, @RequestParam("memberPw") String pw, HttpSession httpSession) {
+        // 아이디 없음: 0, 비밀번호 틀림: 1, 로그인 성공: 2
+        MemberDto member = null;
+        try {
+            member = memberService.get(id);
+            if (!member.getMemberPw().equals(pw)) {
+                return 1;
+            } else {
+                httpSession.setAttribute("memberId", member.getMemberId());
+                return 2;
+            }
+        } catch (Exception e){
+            return 0;
         }
-        model.addAttribute("center","main");
-        return "index";
     }
 
     @RequestMapping("/join")
@@ -43,11 +51,9 @@ public class MemberController {
 
     @RequestMapping("/joinimpl")
     public String joinimpl(Model model,
-                           MemberDto memberDto,
-                           HttpSession httpSession) throws Exception {
+                           MemberDto memberDto) throws Exception {
 
         memberService.add(memberDto);
-        httpSession.setAttribute("id", memberDto.getMemberId());
         model.addAttribute("center", dir + "login");
 
         return "index";
