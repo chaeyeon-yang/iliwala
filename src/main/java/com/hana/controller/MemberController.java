@@ -78,7 +78,29 @@ public class MemberController {
     }
 
     @RequestMapping("/idFind")
-    public String idFind(Model model) {
+    public String idFind() {
         return dir+"idFind";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/idFindImpl")
+    public String idFindImpl(Model model, @RequestParam("memberName") String memberName, @RequestParam("memberEmail") String memberEmail) {
+        // id 반환
+        MemberDto member = MemberDto.builder().memberName(memberName).memberEmail(memberEmail).build();
+        String memberId = null;
+        try {
+            memberId = memberService.findId(member);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return memberId;
+    }
+
+    @RequestMapping("/idFindMsg")
+    public String idFindMsg(Model model, @RequestParam("memberId") String memberId) {
+        model.addAttribute("memberId", memberId);
+
+        return dir+"/idFindMsg";
     }
 }

@@ -19,11 +19,41 @@
   <!-- Bootstarp JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
 </head>
+
+<script>
+  let idFind = {
+    init: function () {
+      $("#okBtn").click(() => {
+        idFind.send();
+      });
+    },
+    send: function () {
+
+      let formData = new FormData($("#idFindForm")[0]);
+
+      $.ajax({
+        type: "POST",
+        url: "<c:url value='/member/idFindImpl' />",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            window.location.href = '<c:url value="/member/idFindMsg?memberId=' + response + '"/>';
+        },
+      });
+    }
+  };
+
+  $(function () {
+    idFind.init();
+  });
+
+</script>
+
 <body>
 <div class="main">
-  <form action="#" name="idFindForm">
+  <form id="idFindForm">
     <table>
       <tr>
         <td colspan="2">아이디 찾기</td>
@@ -37,16 +67,16 @@
           <img src="<c:url value="/img/member/txt_email.gif"/>">
         </td>
         <td style="width: 80%;">
-          <input type="text" name="userName">
-          <input type="text" class="emailText" name="userEmail">
+          <input type="text" name="memberName">
+          <input type="text" class="emailText" name="memberEmail">
         </td>
       </tr>
     </table>
+    <div><input id="okBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_confirm.gif"/>'); background-size: cover; width: 65px; height: 32px; border: none">
+    </div>
+    <div><input id="cancelBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_close.gif"/>'); background-size: cover; width: 44px; height: 19px; border: none" onclick="window.close()">
+    </div>
   </form>
-  <div><input id="okBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_confirm.gif"/>'); background-size: cover; width: 65px; height: 32px; border: none">
-  </div>
-  <div><input type="image" src="<c:url value="/img/member/btn_close.gif" />" onclick="window.close()"></div>
 </div>
-
 </body>
 </html>
