@@ -41,6 +41,18 @@ public class MemberController {
         return "index";
     }
 
+    @RequestMapping("/joinimpl")
+    public String joinimpl(Model model,
+                           MemberDto memberDto,
+                           HttpSession httpSession) throws Exception {
+
+        memberService.add(memberDto);
+        httpSession.setAttribute("id", memberDto.getMemberId());
+        model.addAttribute("center", dir + "login");
+
+        return "index";
+    }
+
     @RequestMapping("/join2")
     public String join2(Model model) {
         model.addAttribute("center",dir+"join2");
