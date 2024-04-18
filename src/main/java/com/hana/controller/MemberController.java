@@ -2,6 +2,7 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.MemberDto;
 import com.hana.app.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,16 @@ public class MemberController {
     @RequestMapping("/login")
     public String login(Model model) {
         model.addAttribute("center",dir+"login");
+        return "index";
+    }
+
+    @RequestMapping("/loginimpl")
+    public String loginimpl(Model model,@RequestParam("id") String id,HttpSession httpSession) {
+        String userId = httpSession.getId();
+        if (id.equals(userId)) {
+            httpSession.setAttribute("id", id);
+        }
+        model.addAttribute("center","main");
         return "index";
     }
 
