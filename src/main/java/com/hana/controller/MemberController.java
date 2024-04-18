@@ -76,4 +76,9 @@ public class MemberController {
         }
         return result;
     }
+
+    @RequestMapping("/idFind")
+    public String idFind(Model model) {
+        return dir+"idFind";
+    }
 }
