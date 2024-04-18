@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface MemberRepository extends HanaRepository<String, MemberDto> {
+    String findId(MemberDto memberDto) throws Exception;
 }

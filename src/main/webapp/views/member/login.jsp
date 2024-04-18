@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="<c:url value="/css/member/login.css"/>">
 </head>
 <script>
+
+    function openIdFindPage() {
+        window.open('<c:url value="/member/idFind" />', '아이디찾기', 'width=430,height=300,location=no,status=no,scrollbars=no');
+    }
+
     let login = {
         init: function () {
             $("#loginForm #loginBtn").click(() => {
@@ -51,7 +56,7 @@
 </div>
 
 <!-- 로그인 -->
-<div class="container text-center">
+<div class="loginForm container text-center">
     <div class="loginSection1">
         <div><h3>로그인</h3></div>
         <div><p>The design and maintenance are excellent.</p></div>
@@ -79,7 +84,7 @@
                     <td>-아이디를 잊으셨나요?</td>
                     <td>
                         <input type="image"
-                               onclick="window.open('idFind.html','아이디찾기', 'width=430,height=300,location=no,status=no,scrollbars=no')",
+                               onclick="openIdFindPage()"
                                src="<c:url value="/img/member/btn_id_find.gif"/>" >
                     </td>
                 </tr>
