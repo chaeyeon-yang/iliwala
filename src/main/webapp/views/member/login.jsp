@@ -10,13 +10,27 @@
     let login = {
         init: function () {
             $("#loginForm #loginBtn").click(() => {
-
+                let memberId = $("#memberId").val();
+                let memberPw = $("#memberPw").val();
+                $.ajax({
+                    url: "<c:url value="/member/loginimpl" />",
+                    data: {"memberId": memberId, "memberPw": memberPw},
+                    success: (res) => {
+                        if (res === 2) {
+                            alert("로그인되었습니다.")
+                            window.location.href = "<c:url value="/" />"
+                        } else if (res === 0) {
+                            alert("아이디가 존재하지 않습니다.")
+                        } else {
+                            alert("비밀번호가 다릅니다.")
+                        }
+                    }
+                })
             })
-
-        }
+        },
     }
     $(function () {
-        login.init();
+      login.init();
     })
 </script>
 
@@ -50,12 +64,12 @@
                     비밀번호
                 </td>
                 <td>
-                    <input type="text" name="loginID"> <br>
-                    <input type="password" name="loginPW">
+                    <input type="text" id="memberId"> <br>
+                    <input type="password" id="memberPw">
                 </td>
                 <td>
-                    <button id="loginBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_login.gif" />'); background-size: cover; width: 70px;  height: 48px;
-                            border: none;"></button>
+                    <input id="loginBtn" type="button" style="background-image: url('<c:url value="/img/member/btn_login.gif" />'); background-size: cover; width: 70px;  height: 48px;
+                            border: none;">
                 </td>
             </tr>
         </table>
