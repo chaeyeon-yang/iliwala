@@ -22,38 +22,37 @@
 </head>
 
 <script>
-  let idFind = {
+  let pwFind = {
     init: function () {
       $("#okBtn").click(() => {
-        idFind.send();
+        pwFind.send();
       });
     },
     send: function () {
 
-      let formData = new FormData($("#idFindForm")[0]);
-
+      let formData = new FormData($("#pwFindForm")[0]);
       $.ajax({
         type: "POST",
-        url: "<c:url value='/member/idFindImpl' />",
+        url: "<c:url value='/member/pwFindImpl' />",
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
-            window.location.href = '<c:url value="/member/idFindMsg?memberId=' + response + '"/>';
+            window.location.href = '<c:url value="/member/pwFindMsg?memberPw=' + response + '"/>';
         },
       });
     }
   };
 
   $(function () {
-    idFind.init();
+    pwFind.init();
   });
 
 </script>
 
 <body>
 <div class="main">
-  <form name="passwordFindForm">
+  <form id="pwFindForm">
     <table>
       <tr>
         <td colspan="2">비밀번호 찾기</td>
