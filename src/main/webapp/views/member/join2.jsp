@@ -33,16 +33,10 @@
       let pwRe = $("#memberPwRe").val()
       return pw === pwRe;
     }
-
-    // SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
-    //
-    // console.log("확인", birthDate);
-    // console.log("확인", formatter1.parse(birthDate)); // '2024-04-30' 형식으로 출력
-
-
+    
     let join2 = {
       init: function () {
-        $("#joinForm #registerBtn").click(() => {
+        $("form #registerBtn").click(() => {
           let id = $("#memberId").val();
           let pw = $("#memberPw").val();
           let name = $("#memberName").val();
@@ -53,13 +47,7 @@
           let gender = $("input[name='memberGender']:checked").val();
           let birthDate = $("#memberBirthDate").val();
 
-          let msg = null
-
-          console.log("이전", birthDate)
-          // birthDate = formatDate(birthDate)
-          console.log("이후", birthDate)
-
-
+          msg = null;
           if (!pwCheck()) {
             msg = "비밀번호는 4자리 이상만 가능합니다."
           }
@@ -77,7 +65,7 @@
             msg = "이메일을 입력해야 합니다.";
           } else if (!emailReceive) {
             msg = "이메일 수신여부를 선택해야 합니다.";
-          } else if (pwQuestion === "0") {
+          } else if (pwQuestion == 0) {
             msg = "비밀번호 확인시 질문을 선택해야 합니다.";
           } else if (!pwAnswer) {
             msg = "비밀번호 확인시 답변을 입력해야 합니다.";
@@ -89,20 +77,9 @@
 
           if (msg) {
             alert(msg);
-          } else {
-            alert("회원가입되었습니다.")
-            join2.send()
           }
-
-        });
+        })
       },
-      send: function() {
-        $("#joinForm").attr({
-          'method':'post',
-          'action': "<c:url value="/member/joinimpl"/>"
-        });
-        $('#joinForm').submit();
-      }
     }
     $(function () {
       join2.init();
@@ -128,7 +105,7 @@
 
 <!-- 메인 -->
 <!-- 회원가입 -->
-<div class="container">
+<div class="joinForm container">
   <div class="joinSection1">
     <div><h3>회원가입</h3></div>
     <div><p>The design and maintenance are excellent.</p></div>
@@ -147,7 +124,7 @@
 
     <div class="information1">
     <div>기본정보</div>
-      <form id="joinForm">
+      <form>
         <table>
         <tr>
           <td>아이디</td>
@@ -210,7 +187,7 @@
         <tr>
           <td>생년월일</td>
           <td>
-            <input type="date" name="memberBirthDate" id="memberBirthDate">
+            <input type="date" name="memberBirthDate" id="memberBirthDate" />
           </td>
         </tr>
       </table>
