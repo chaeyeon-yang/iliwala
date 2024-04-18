@@ -97,7 +97,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link" href="#">커뮤니티</a>
           <div class="dropdown-content">
-            <a href="<c:url value="/board"/>">공지사항</a>
+            <a href="<c:url value="/notice/"/>">공지사항</a>
             <a href="#">홍보자료</a>
             <a href="#">채용안내</a>
           </div>

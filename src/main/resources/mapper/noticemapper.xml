@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hana.app.repository.NoticeRepository">
+<!--    <select id="selectOne" parameterType="Integer" resultType="noticeDto">-->
+<!--        SELECT * FROM company_notice WHERE member_id=#{memberId}-->
+<!--    </select>-->
+    <select id="select" resultType="noticeDto">
+        SELECT * FROM company_notice
+    </select>
+<!--    <insert id="insert" parameterType="noticeDto">-->
+<!--        INSERT INTO company_notice VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())-->
+<!--    </insert>-->
+<!--    <delete id="delete" parameterType="Integer">-->
+<!--        DELETE FROM company_notice WHERE member_id=#{memberId}-->
+<!--    </delete>-->
+</mapper>
