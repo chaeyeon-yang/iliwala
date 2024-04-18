@@ -10,11 +10,7 @@ public class MainContoller {
     public String main(){
         return "index";
     }
-    @RequestMapping("/board")
-    public String board(Model model){
-        model.addAttribute("center","board");
-        return "index";
-    }
+
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("center","admin");
