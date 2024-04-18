@@ -103,4 +103,9 @@ public class MemberController {
 
         return dir+"/idFindMsg";
     }
+
+    @RequestMapping("/pwFind")
+    public String pwFind() {
+        return dir+"pwFind";
+    }
 }
