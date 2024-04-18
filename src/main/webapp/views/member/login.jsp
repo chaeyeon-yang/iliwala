@@ -11,6 +11,9 @@
     function openIdFindPage() {
         window.open('<c:url value="/member/idFind" />', '아이디찾기', 'width=430,height=300,location=no,status=no,scrollbars=no');
     }
+    function openPwFindPage() {
+        window.open('<c:url value="/member/pwFind" />', '비밀번호찾기', 'width=430,height=300,location=no,status=no,scrollbars=no');
+    }
 
     let login = {
         init: function () {
@@ -92,7 +95,7 @@
                     <td>-비밀번호를 잊으셨나요?</td>
                     <td>
                         <input type="image"
-                               onclick="window.open('passwordFind.html','비밀번호찾기', 'width=430,height=300,location=no,status=no,scrollbars=no')",
+                               onclick="openPwFindPage()",
                                src="<c:url value="/img/member/btn_pw_find.gif" />" >
                     </td>
                 </tr>

@@ -38,7 +38,12 @@ public class MemberService implements HanaService<String, MemberDto> {
         return memberRepository.select();
     }
 
+    // 아이디 찾기
     public String findId(MemberDto memberDto) throws Exception {
         return memberRepository.findId(memberDto);
+    }
+    // 비밀번호 찾기
+    public String findPw(MemberDto memberDto) throws Exception {
+        return memberRepository.findPw(memberDto);
     }
 }

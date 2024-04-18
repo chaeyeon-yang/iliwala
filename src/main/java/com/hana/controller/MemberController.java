@@ -103,4 +103,30 @@ public class MemberController {
 
         return dir+"/idFindMsg";
     }
+
+    @RequestMapping("/pwFind")
+    public String pwFind() {
+        return dir+"pwFind";
+    }
+
+    @ResponseBody
+    @RequestMapping("/pwFindImpl")
+    public String pwFindImpl( @RequestParam("memberName") String memberName, @RequestParam("memberId") String memberId, @RequestParam("memberEmail") String memberEmail) {
+        // pw 반환
+        MemberDto member = MemberDto.builder().memberName(memberName).memberId(memberId).memberEmail(memberEmail).build();
+        String memberPw = null;
+        try {
+            memberPw = memberService.findPw(member);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return memberPw;
+    }
+
+    @RequestMapping("/pwFindMsg")
+    public String pwFindMsg(Model model, @RequestParam("memberPw") String memberPw) {
+        model.addAttribute("memberPw", memberPw);
+
+        return dir+"/pwFindMsg";
+    }
 }
