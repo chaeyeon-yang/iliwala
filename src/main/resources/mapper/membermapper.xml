@@ -9,6 +9,9 @@
     <select id="select" resultType="memberDto">
         SELECT * FROM company_member
     </select>
+    <select id="findId" parameterType="memberDto" resultType="String">
+        select member_id from company_member where member_name=#{memberName} and member_email=#{memberEmail};
+    </select>
     <insert id="insert" parameterType="memberDto">
         INSERT INTO company_member VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())
     </insert>
