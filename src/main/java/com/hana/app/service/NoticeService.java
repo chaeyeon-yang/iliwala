@@ -37,4 +37,8 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
     public List<NoticeDto> get() throws Exception {
         return noticeRepository.select();
     }
+
+    public List<NoticeDto> searchTitle(String text) throws Exception {
+        return noticeRepository.searchTitle(text);
+    }
 }
