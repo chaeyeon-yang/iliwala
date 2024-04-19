@@ -8,6 +8,16 @@
 <script>
     let notice = {
         init: function () {
+            $("#searchBtn").click(() => {
+                let searchOption = $("select[name='searchOption'] option:selected").val();
+                let searchTerm = $("#searchTerm").val();
+                if (searchOption === "title") {
+                    window.location.href = '<c:url value="/notice/searchTitle"/>?term=' + encodeURIComponent(searchTerm);
+                }
+                <%--else {--%>
+                <%--    window.location.href = '<c:url value="/notice/searchTitle"/>?term=' + encodeURIComponent(searchTerm);--%>
+                <%--}--%>
+            })
         }
     };
     $(function () {
@@ -40,22 +50,21 @@
 
 
 <!-- search bar -->
-<div class="search container">
+<form class="search container">
     <table>
         <tr>
             <td>
-                <select name="내용" id="">
-                    <option value="">제목</option>
-                    <option value="">내용</option>
-                    <option value="">작성자</option>
+                <select name="searchOption">
+                    <option value="title" selected>제목</option>
+                    <option value="content">내용</option>
                 </select>
             </td>
             <td>
-                <input type="text">
+                <input type="text" id="searchTerm">
             </td>
             <td>
-                <input type="image" src="<c:url value="/img/community/search.gif"/>">
+                <input id="searchBtn" typeof="button" style="background-image: url('<c:url value="/img/community/search.gif"/>'); background-size: cover; width: 26px; height: 25px; border: 1px solid black; margin-bottom: 5px">
             </td>
         </tr>
     </table>
-</div>
+</form>
