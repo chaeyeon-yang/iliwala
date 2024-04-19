@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hana.app.repository.NoticeRepository">
-<!--    <select id="selectOne" parameterType="Integer" resultType="noticeDto">-->
-<!--        SELECT * FROM company_notice WHERE member_id=#{memberId}-->
-<!--    </select>-->
+    <select id="selectOne" parameterType="Integer" resultType="noticeDto">
+        SELECT * FROM company_notice WHERE notice_idx=#{noticeIdx}
+    </select>
     <select id="select" resultType="noticeDto">
         SELECT * FROM company_notice
     </select>

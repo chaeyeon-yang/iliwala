@@ -33,6 +33,14 @@ public class NoticeController {
         return "index";
     }
 
+    @RequestMapping("/get")
+    public String get(Model model, @RequestParam("no") Integer no) throws Exception {
+        NoticeDto notice = noticeService.get(no);
+        model.addAttribute("notice", notice);
+        model.addAttribute("center", dir+"noticeDetail");
+        return "index";
+    }
+
     @RequestMapping("/searchTitle")
     public String searchTitle(Model model, @RequestParam("term") String noticeTitle) {
         try {

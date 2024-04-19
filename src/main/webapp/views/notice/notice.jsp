@@ -38,9 +38,9 @@
             </tr>
             <c:forEach var="n" items="${notices}" varStatus="loop">
                 <tr>
-                    <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${loop.index + 1}</a></td>
-                    <td>${n.noticeTitle}</td>
-                    <td>${n.noticeDate}</td>
+                    <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${loop.index + 1}</a></td>
+                    <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${n.noticeTitle}</a></td>
+                    <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${n.noticeDate}</a></td>
                 </tr>
             </c:forEach>
         </table>

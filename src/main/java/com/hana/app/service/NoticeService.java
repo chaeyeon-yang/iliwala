@@ -30,7 +30,7 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
 
     @Override
     public NoticeDto get(Integer integer) throws Exception {
-        return null;
+        return noticeRepository.selectOne(integer);
     }
 
     @Override
