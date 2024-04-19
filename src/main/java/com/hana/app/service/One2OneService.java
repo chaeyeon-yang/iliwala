@@ -2,7 +2,7 @@ package com.hana.app.service;
 
 import com.hana.app.data.dto.One2oneDto;
 import com.hana.app.frame.HanaService;
-import com.hana.app.repository.CustomerRepository;
+import com.hana.app.repository.One2OneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +10,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService implements HanaService<Integer, One2oneDto> {
+public class One2OneService implements HanaService<Integer, One2oneDto> {
 
-    final CustomerRepository customerRepository;
+    final One2OneRepository one2OneRepository;
     @Override
     public int add(One2oneDto one2oneDto) throws Exception {
-        return customerRepository.insert(one2oneDto);
+        return one2OneRepository.insert(one2oneDto);
     }
 
     @Override
