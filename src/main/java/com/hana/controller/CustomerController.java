@@ -1,5 +1,6 @@
 package com.hana.controller;
 
+import com.hana.app.data.dto.NoticeDto;
 import com.hana.app.data.dto.One2oneDto;
 import com.hana.app.data.dto.QnaDto;
 import com.hana.app.service.One2OneService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -40,6 +42,42 @@ public class CustomerController {
         List<QnaDto> qnaList = qnaService.get();
         model.addAttribute("qnaList",qnaList);
         model.addAttribute("center",dir+"askanswer");
+        return "index";
+    }
+
+    @RequestMapping("/searchTitle")
+    public String searchTitle(Model model, @RequestParam("term") String term) {
+        try {
+            List<QnaDto> qnaList = qnaService.searchTitle(term);
+            model.addAttribute("qnaList", qnaList);
+            model.addAttribute("center",dir+"askanswer");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
+    }
+
+    @RequestMapping("/searchContent")
+    public String searchContent(Model model, @RequestParam("term") String term) {
+        try {
+            List<QnaDto> qnaList = qnaService.searchContent(term);
+            model.addAttribute("qnaList", qnaList);
+            model.addAttribute("center",dir+"askanswer");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
+    }
+
+    @RequestMapping("/searchName")
+    public String searchName(Model model, @RequestParam("term") String term) {
+        try {
+            List<QnaDto> qnaList = qnaService.searchName(term);
+            model.addAttribute("qnaList", qnaList);
+            model.addAttribute("center",dir+"askanswer");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "index";
     }
 }

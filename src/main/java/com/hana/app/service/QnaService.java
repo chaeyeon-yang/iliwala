@@ -37,4 +37,14 @@ public class QnaService implements HanaService<Integer, QnaDto> {
     public List<QnaDto> get() throws Exception {
         return qnaRepository.select();
     }
+
+    public List<QnaDto> searchTitle(String text) throws Exception {
+        return qnaRepository.searchTitle(text);
+    }
+    public List<QnaDto> searchContent(String text) throws Exception {
+        return qnaRepository.searchContent(text);
+    }
+    public List<QnaDto> searchName(String text) throws Exception {
+        return qnaRepository.searchName(text);
+    }
 }

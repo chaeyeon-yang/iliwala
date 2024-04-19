@@ -9,12 +9,15 @@
     <select id="select" resultType="qnaDto">
         SELECT * FROM company_qna
     </select>
-<!--    <select id="searchTitle" parameterType="String" resultType="qnaDto">-->
-<!--        select * from company_notice where notice_title like concat('%', #{noticeTitle}, '%')-->
-<!--    </select>-->
-<!--    <select id="searchContent" parameterType="String" resultType="qnaDto">-->
-<!--        select * from company_notice where notice_content like concat('%', #{noticeContent}, '%')-->
-<!--    </select>-->
+    <select id="searchTitle" parameterType="String" resultType="qnaDto">
+        select * from company_qna where qna_title like concat('%', #{qnaTitle}, '%')
+    </select>
+    <select id="searchContent" parameterType="String" resultType="qnaDto">
+        select * from company_qna where qna_content like concat('%', #{qnaContent}, '%')
+    </select>
+    <select id="searchName" parameterType="String" resultType="qnaDto">
+        select * from company_qna where qna_name like concat('%', #{qnaName}, '%')
+    </select>
 <!--    <delete id="delete" parameterType="Integer">-->
 <!--        DELETE FROM company_notice WHERE member_id=#{memberId}-->
 <!--    </delete>-->
