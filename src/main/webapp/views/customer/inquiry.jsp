@@ -6,8 +6,26 @@
   <link rel="stylesheet" href="<c:url value="/css/customer/customer01.css"/>">
 </head>
 
-
-<!-- 메인 -->
+<script>
+  let inquiry = {
+    init: function () {
+      $("#okBtn").click(() => {
+        this.send();
+      })
+    },
+    send: function () {
+      $("#questionForm").attr({
+        'method': 'post',
+        'action': "<c:url value="/customer/inquiryimpl" />"
+      });
+      $("#questionForm").submit()
+      alert("문의가 접수되었습니다.")
+    }
+  }
+  $(function () {
+    inquiry.init()
+  })
+</script>
 <!-- 1:1문의 -->
 <!-- COMMON -->
 <div class="commonSection1">
@@ -72,11 +90,11 @@
     <div>The design and maintenance are excellent.</div>
   </div>
   <div class="question">
-    <form action="" name="questionForm">
+    <form action="" name="questionForm" id="questionForm">
       <table>
         <tr>
           <td>구분</td>
-          <td><select name="cate">
+          <td><select>
                 <option value="1">로그인</option>
                 <option value="2">회원가입</option>
                 <option value="3">이용안내</option>
@@ -85,33 +103,33 @@
         </tr>
         <tr>
           <td>성명</td>
-          <td><input type="text" class="inputStyle1" name="name"></td>
+          <td><input type="text" class="inputStyle1" id="name" name="one2oneName"></td>
         </tr>
         <tr>
           <td>전화번호</td>
-          <td><input type="text" class="inputStyle1" name="tel"></td>
+          <td><input type="text" class="inputStyle1" id="phone" name="one2onePhone"></td>
         </tr>
         <tr>
           <td>이메일</td>
-          <td><input type="text" class="inputStyle2" name="email"></td>
+          <td><input type="text" class="inputStyle2" id="email" name="one2oneEmail"></td>
         </tr>
         <tr>
           <td>주소</td>
-          <td><input type="text" class="inputStyle2" name="address"></td>
+          <td><input type="text" class="inputStyle2" id="address" name="one2oneAddress"></td>
         </tr>
         <tr>
           <td>제목</td>
-          <td><input type="text" class="inputStyle2" name="title"></td>
+          <td><input type="text" class="inputStyle2" id="title" name="one2oneTitle"></td>
         </tr>
         <tr>
           <td>설명</td>
-          <td><textarea name="desc" rows="10" style="width: 90%;"></textarea></td>
+          <td><textarea title="content" name="one2oneContent" rows="10" style="width: 90%;"></textarea></td>
         </tr>
       </table>
+      <div class="btn">
+        <input id="okBtn" type="button" style="background-image: url('<c:url value="/img/customer/btn_confirm.gif"/>'); background-size: cover; width: 68px; height: 32px; border: none;">
+        <input type="image" src="<c:url value="/img/customer/btn_cancel.gif"/>">
+      </div>
     </form>
-  </div>
-  <div class="btn">
-    <input type="image" src="<c:url value="/img/customer/btn_confirm.gif"/>" onclick="submit()">
-    <input type="image" src="<c:url value="/img/customer/btn_cancel.gif"/>">
   </div>
 </div>

@@ -16,6 +16,6 @@
         select * from company_notice where notice_content like concat('%', #{noticeContent}, '%')
     </select>
     <insert id="insert" parameterType="one2oneDto">
-        INSERT INTO company_one2one VALUES (#{one2oneName}, #{one2onePhone}, #{one2oneEmail}, #{one2oneAddress}, #{one2oneTitle}, #{one2oneContent}, NOW())
+        INSERT INTO company_one2one VALUES (0, #{one2oneName}, #{one2onePhone}, #{one2oneEmail}, #{one2oneAddress}, #{one2oneTitle}, #{one2oneContent}, NOW())
     </insert>
 </mapper>
