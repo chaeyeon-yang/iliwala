@@ -44,4 +44,16 @@ public class NoticeController {
         }
         return "index";
     }
+
+    @RequestMapping("/searchContent")
+    public String searchContent(Model model, @RequestParam("term") String noticeContent) {
+        try {
+            List<NoticeDto> noticeList = noticeService.searchContent(noticeContent);
+            model.addAttribute("notices", noticeList);
+            model.addAttribute("center",dir+"notice");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
+    }
 }

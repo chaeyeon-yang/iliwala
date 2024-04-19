@@ -12,6 +12,9 @@
     <select id="searchTitle" parameterType="String" resultType="noticeDto">
         select * from company_notice where notice_title like concat('%', #{noticeTitle}, '%')
     </select>
+    <select id="searchContent" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_content like concat('%', #{noticeContent}, '%')
+    </select>
 <!--    <delete id="delete" parameterType="Integer">-->
 <!--        DELETE FROM company_notice WHERE member_id=#{memberId}-->
 <!--    </delete>-->
