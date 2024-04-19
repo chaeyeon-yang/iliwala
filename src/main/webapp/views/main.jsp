@@ -13,7 +13,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active section1">
-      <img src="./img/visual01.jpg" class="d-block w-100" alt="...">
+      <img src="<c:url value="/img/visual01.jpg"/>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block caption-text">
         <div>
           <h3>Creative web Design</h3>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="carousel-item section1">
-      <img src="./img/visual02.jpg" class="d-block w-100" alt="...">
+      <img src="<c:url value="/img/visual02.jpg"/>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block caption-text">
         <div>
           <h3>Versatile web Design</h3>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="carousel-item section1">
-      <img src="./img/visual03.jpg" class="d-block w-100" alt="...">
+      <img src="<c:url value="/img/visual03.jpg"/>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block caption-text">
         <div>
           <h3>Responsive web Design</h3>
@@ -96,7 +96,7 @@
       <div class="proSection2">
         <div class="contents1 con1 ">
           <a href="#">
-            <img src="./img/m-op01.jpg">
+            <img src="<c:url value="/img/m-op01.jpg"/>">
             <div class="overlay">
               <div class="con2">
                 <p>DFSA 101</p>
@@ -108,7 +108,7 @@
         <div class="proSection3 ">
           <div class="contents2 con1">
             <a href="#">
-              <img src="./img/m-op02.jpg">
+              <img src="<c:url value="/img/m-op02.jpg"/>">
               <div class="overlay">
                 <div class="con2">
                   <p>DFSA 102</p>
@@ -119,7 +119,7 @@
           </div>
           <div class="contents3 con1">
             <a href="#">
-              <img src="./img/m-op03.jpg">
+              <img src="<c:url value="/img/m-op03.jpg"/>">
               <div class="overlay">
                 <div class="con2">
                   <p>DFSA 103</p>
@@ -130,7 +130,7 @@
           </div>
           <div class="contents4 con1">
             <a href="#">
-              <img src="./img/m-op04.jpg">
+              <img src="<c:url value="/img/m-op04.jpg"/>">
               <div class="overlay">
                 <div class="con2">
                   <p>DFSA 104</p>
@@ -141,7 +141,7 @@
           </div>
           <div class="contents5 con1">
             <a href="#">
-              <img src="./img/m-op05.jpg">
+              <img src="<c:url value="/img/m-op05.jpg"/>">
               <div class="overlay">
                 <div class="con2">
                   <p>DFSA 105</p>
@@ -166,7 +166,7 @@
   <div class="businessSection2">
     <div class="businessCard">
       <a href="#">
-        <img class="businessImg" src="./img/m-mb01.jpg">
+        <img class="businessImg" src="<c:url value="/img/m-mb01.jpg"/>">
         <div>
           <h4>사업분야01</h4>
           <p>고객의 필요와 사업환경에 따라 맞춤형 디자인으로 보다 큰 감동을 드립니다.</p>
@@ -175,7 +175,7 @@
     </div>
     <div class="businessCard">
       <a href="#">
-        <img class="businessImg" src="./img/m-mb02.jpg">
+        <img class="businessImg" src="<c:url value="/img/m-mb02.jpg"/>">
         <div>
           <h4>사업분야02</h4>
           <p>고객의 필요와 사업환경에 따라 맞춤형 디자인으로 보다 큰 감동을 드립니다.</p>
@@ -184,7 +184,7 @@
     </div>
     <div class="businessCard">
       <a href="#">
-        <img class="businessImg" src="./img/m-mb03.jpg">
+        <img class="businessImg" src="<c:url value="/img/m-mb03.jpg"/>">
         <div>
           <h4>사업분야03</h4>
           <p>고객의 필요와 사업환경에 따라 맞춤형 디자인으로 보다 큰 감동을 드립니다.</p>
@@ -193,7 +193,7 @@
     </div>
     <div class="businessCard">
       <a href="#">
-        <img class="businessImg" src="./img/m-mb04.jpg">
+        <img class="businessImg" src="<c:url value="/img/m-mb04.jpg"/>">
         <div>
           <h4>사업분야04</h4>
           <p>고객의 필요와 사업환경에 따라 맞춤형 디자인으로 보다 큰 감동을 드립니다.</p>
@@ -206,7 +206,7 @@
 <!-- 섹션5 -->
 <div class="mainBanner">
   <div class="mainBannerImg">
-    <img src="./img/visual04.jpg" style="width: 100%; height: 100%;">
+    <img src="<c:url value="/img/visual04.jpg"/>" style="width: 100%; height: 100%;">
   </div>
   <div class="mainBannerText">
     <h2>정직과 신뢰, 디자인</h2>
@@ -237,7 +237,7 @@
     <div class="csCard1">
       <a href="#">
         <div>
-          <img src="./img/m-os01.png">
+          <img src="<c:url value="/img/m-os01.png"/>">
         </div>
         <div>
           <span>묻고답하기</span>
@@ -250,7 +250,7 @@
     <div class="csCard2">
       <a href="#">
         <div>
-          <img src="./img/m-os02.png">
+          <img src="<c:url value="/img/m-os02.png"/>">
         </div>
         <div>
           <span>채용안내</span>
@@ -263,7 +263,7 @@
     <div class="csCard3">
       <a href="#">
         <div>
-          <img src="./img/m-os03.png">
+          <img src="<c:url value="/img/m-os03.png"/>">
         </div>
         <div>
           <span>오시는길</span>
