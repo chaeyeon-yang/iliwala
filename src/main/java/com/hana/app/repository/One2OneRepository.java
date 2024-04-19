@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface CustomerRepository extends HanaRepository<Integer, One2oneDto> {
+public interface One2OneRepository extends HanaRepository<Integer, One2oneDto> {
 }

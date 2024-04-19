@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hana.app.repository.CustomerRepository">
+<mapper namespace="com.hana.app.repository.One2OneRepository">
     <select id="selectOne" parameterType="Integer" resultType="one2oneDto">
         SELECT * FROM company_one2one WHERE one2one_idx=#{one2oneIdx}
     </select>

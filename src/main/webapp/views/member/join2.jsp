@@ -202,7 +202,7 @@
         </tr>
       </table>
         <div class="Information2">부가정보</div>
-        <div class="imageBtn2">
+        <div class="imageBtn2">.
           <input type="button" id="registerBtn" style="background-image: url('<c:url value='/img/member/btn_confirm.gif'/>'); background-size: cover; padding: 16px 32px; border: none">
           <input type="button" style="background-image: url('<c:url value='/img/member/btn_cancel.gif'/>'); background-size: cover; padding: 16px 32px; border: none">
         </div>
