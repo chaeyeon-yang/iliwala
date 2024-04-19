@@ -21,6 +21,7 @@ public class CustomerController {
 
     final QnaService qnaService;
 
+    // 1:1 문의
     @RequestMapping("/inquiry")
     public String inquiry(Model model) throws Exception {
         model.addAttribute("center",dir+"inquiry");
@@ -33,6 +34,7 @@ public class CustomerController {
         return "index";
     }
 
+    // 묻고 답하기
     @RequestMapping("/askanswer")
     public String askanswer(Model model) throws Exception {
         List<QnaDto> qnaList = qnaService.get();

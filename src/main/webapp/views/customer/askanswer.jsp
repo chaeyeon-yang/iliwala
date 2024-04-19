@@ -77,36 +77,15 @@
         <th>작성자</th>
         <th>작성일</th>
       </tr>
-      <tr onclick="openWindow(5)">
-        <td>5</td>
-        <td><img src="<c:url value="/img/customer/icon_sct.gif" />">문의사항에 대해 자세한 답변 부탁합니다.</td>
-        <td>hong</td>
-        <td>2019-06-19</td>
-      </tr>
-      <tr onclick="openWindow(4)">
-        <td>4</td>
-        <td><img src="<c:url value="/img/customer/icon_sct.gif"/>">문의사항에 대해 자세한 답변 부탁합니다.</td>
-        <td>hong</td>
-        <td>2019-06-19</td>
-      </tr>
-      <tr onclick="openWindow(3)">
-        <td>3</td>
-        <td><img src="<c:url value="/img/customer/icon_sct.gif" />">문의사항에 대해 자세한 답변 부탁합니다.</td>
-        <td>hong</td>
-        <td>2019-06-19</td>
-      </tr>
-      <tr onclick="openWindow(2)">
-        <td>2</td>
-        <td><img src="<c:url value="/img/customer/icon_sct.gif"/>">문의사항에 대해 자세한 답변 부탁합니다.</td>
-        <td>hong</td>
-        <td>2019-06-19</td>
-      </tr>
-      <tr onclick="openWindow(1)">
-        <td>1</td>
-        <td><img src="<c:url value="/img/customer/icon_sct.gif" />">문의사항에 대해 자세한 답변 부탁합니다.</td>
-        <td>hong</td>
-        <td>2019-06-19</td>
-      </tr>
+
+      <c:forEach var="q" items="${qnaList}" varStatus="loop">
+        <tr>
+          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${loop.index + 1}</a></td>
+          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${q.qnaTitle}</a></td>
+          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${q.qnaName}</a></td>
+          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${q.qnaDate}</a></td>
+        </tr>
+      </c:forEach>
     </table>
   </div>
 </div>
