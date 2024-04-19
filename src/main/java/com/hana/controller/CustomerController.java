@@ -21,9 +21,16 @@ public class CustomerController {
         model.addAttribute("center",dir+"inquiry");
         return "index";
     }
+
     @RequestMapping("/inquiryimpl")
     public String inquiryimpl(One2oneDto one2oneDto) throws Exception {
         customerService.add(one2oneDto);
+        return "index";
+    }
+    
+    @RequestMapping("/askanswer")
+    public String askanswer(Model model) throws Exception {
+        model.addAttribute("center",dir+"askanswer");
         return "index";
     }
 }

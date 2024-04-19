@@ -106,7 +106,7 @@
           <a class="nav-link" href="#">고객지원</a>
           <div class="dropdown-content">
             <a href="<c:url value="/customer/inquiry"/>">1:1문의</a>
-            <a href="./customer/customer02.html">묻고답하기</a>
+            <a href="<c:url value="/customer/askanswer"/>">묻고답하기</a>
             <a href="./customer/customer03.html">FAQ</a>
           </div>
         </li>
