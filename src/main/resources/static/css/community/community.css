@@ -46,7 +46,7 @@
 .search input[type="text"] {
   height: 25px;
 }
-.search input[type="image"] {
+.search input[type="button"] {
   border: 1px solid black;
   width: 26px;
 }
