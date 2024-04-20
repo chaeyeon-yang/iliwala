@@ -13,4 +13,5 @@ public interface QnaRepository extends HanaRepository<Integer, QnaDto> {
     List<QnaDto> searchTitle(String text) throws Exception;
     List<QnaDto> searchContent(String text) throws Exception;
     List<QnaDto> searchName(String text) throws Exception;
+    QnaDto enterPw(String pw) throws Exception;
 }

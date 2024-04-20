@@ -30,7 +30,7 @@ public class QnaService implements HanaService<Integer, QnaDto> {
 
     @Override
     public QnaDto get(Integer integer) throws Exception {
-        return null;
+        return qnaRepository.selectOne(integer);
     }
 
     @Override
@@ -46,5 +46,8 @@ public class QnaService implements HanaService<Integer, QnaDto> {
     }
     public List<QnaDto> searchName(String text) throws Exception {
         return qnaRepository.searchName(text);
+    }
+    public QnaDto enterPw(String pw) throws Exception {
+        return qnaRepository.enterPw(pw);
     }
 }
