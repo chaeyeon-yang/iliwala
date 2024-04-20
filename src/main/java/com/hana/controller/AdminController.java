@@ -51,6 +51,9 @@ public class AdminController {
     @RequestMapping("/member")
     public String member(Model model) throws Exception {
         List<MemberDto> members = memberService.get();
+        Integer memberCnt = memberService.memberCnt();
+
+        model.addAttribute("memberCnt", memberCnt);
         model.addAttribute("members", members);
         model.addAttribute("center", dir+"member");
         return "index";

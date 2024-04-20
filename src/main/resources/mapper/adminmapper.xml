@@ -9,12 +9,7 @@
     <select id="select" resultType="adminDto">
         SELECT * FROM company_member_admin
     </select>
-    <select id="findId" parameterType="memberDto" resultType="String">
-        select member_id from company_member where member_name=#{memberName} and member_email=#{memberEmail};
-    </select>
-    <select id="findPw" parameterType="memberDto" resultType="String">
-        select member_pw from company_member where member_name=#{memberName} and member_id=#{memberId} and member_email=#{memberEmail};
-    </select>
+
     <insert id="insert" parameterType="memberDto">
         INSERT INTO company_member VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())
     </insert>

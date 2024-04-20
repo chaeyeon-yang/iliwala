@@ -60,7 +60,7 @@
         </select>
   		</div>
   		<div class="adminDiv2" id="tableTitle">
-  		  <div>회원목록 1건</div>
+  		  <div>회원목록 ${memberCnt}건</div>
   		  <div>한페이지 행수
 	  		  <select class="size" name="page_select" id="page_select">
 	          <option value="page10" selected>5개만 보기</option>

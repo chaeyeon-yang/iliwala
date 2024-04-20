@@ -46,4 +46,9 @@ public class MemberService implements HanaService<String, MemberDto> {
     public String findPw(MemberDto memberDto) throws Exception {
         return memberRepository.findPw(memberDto);
     }
+
+    // 총 회원 수 조회
+    public Integer memberCnt() throws Exception {
+        return memberRepository.memberCnt();
+    }
 }
