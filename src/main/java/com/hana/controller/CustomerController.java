@@ -1,5 +1,6 @@
 package com.hana.controller;
 
+import com.hana.app.data.dto.MemberDto;
 import com.hana.app.data.dto.NoticeDto;
 import com.hana.app.data.dto.One2oneDto;
 import com.hana.app.data.dto.QnaDto;
@@ -87,14 +88,31 @@ public class CustomerController {
         return dir+"askanswerPw";
     }
 
-//    @ResponseBody
-//    @RequestMapping("/checkPw")
-//    public Integer checkPw(@RequestParam("qnaPw") String qnaPw) throws Exception {
-//        // 1: 유효한 게시글 비밀번호, 0: 유효하지 않은 게시글 비밀번호
-//        QnaDto qnaDto = qnaService.enterPw(qnaPw);
-//        if (qnaPw.equals(qnaDto)) {
-//            return 1;
-//        }
-//        return 0;
-//    }
+    @ResponseBody
+    @RequestMapping("/checkPw")
+    public Integer checkPw(@RequestParam("qnaPw") String qnaPw) throws Exception {
+        // qnaIdx: 유효한 게시글 비밀번호 -> 게시글 인덱스 반환, 0: 유효하지 않은 게시글 비밀번호
+        QnaDto qnaDto = qnaService.enterPw(qnaPw);
+        if (qnaDto == null) {
+            return 0;
+        }
+        if (qnaPw.equals(qnaDto.getQnaPw())) {
+            return qnaDto.getQnaIdx();
+        }
+        return 0;
+    }
+
+    @RequestMapping("/askanswerPwMsg")
+    public String askanswerPwMsg() {
+        return dir+"askanswerPwMsg";
+    }
+
+    @RequestMapping("/askanswerDetail")
+    public String askanswerDetail(Model model, @RequestParam("no") Integer no) throws Exception {
+        QnaDto qnaDto = qnaService.get(no);
+        model.addAttribute("qnaDto", qnaDto);
+        model.addAttribute("center", dir+"askanswerDetail");
+        return "index";
+    }
+
 }
