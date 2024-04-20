@@ -16,6 +16,9 @@
     <select id="searchId" parameterType="String" resultType="memberDto">
         select * from company_member where member_id like lower(concat('%', #{memberId}, '%'))
     </select>
+    <select id="searchName" parameterType="String" resultType="memberDto">
+        select * from company_member where member_name like lower(concat('%', #{memberName}, '%'))
+    </select>
 
     <select id="findId" parameterType="memberDto" resultType="String">
         select member_id from company_member where member_name=#{memberName} and member_email=#{memberEmail};

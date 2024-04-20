@@ -14,6 +14,8 @@
 				let searchTerm = $("#searchTerm").val();
 				if (searchOption === "id") {
 					window.location.href = '<c:url value="/admin/searchId"/>?term=' + encodeURIComponent(searchTerm);
+				} else if (searchOption === "name") {
+					window.location.href = '<c:url value="/admin/searchName"/>?term=' + encodeURIComponent(searchTerm);
 				} else {
 					window.location.href = '<c:url value="/notice/searchContent"/>?term=' + encodeURIComponent(searchTerm);
 				}
