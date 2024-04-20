@@ -9,9 +9,23 @@
     <select id="select" resultType="memberDto">
         SELECT * FROM company_member
     </select>
-
     <select id="memberCnt" resultType="Integer">
         SELECT count(*) FROM company_member;
+    </select>
+
+    <select id="searchId" parameterType="String" resultType="memberDto">
+        select * from company_member where member_id like lower(concat('%', #{memberId}, '%'))
+    </select>
+    <select id="searchName" parameterType="String" resultType="memberDto">
+        select * from company_member where member_name like lower(concat('%', #{memberName}, '%'))
+    </select>
+    <select id="searchEmail" parameterType="String" resultType="memberDto">
+        select * from company_member where member_email like lower(concat('%', #{memberEmail}, '%'))
+    </select>
+    <select id="searchAll" parameterType="String" resultType="memberDto">
+        select * from company_member where member_id like lower(concat('%', #{memberId}, '%')) or
+                                           member_name like lower(concat('%', #{memberName}, '%')) or
+                                           member_email like lower(concat('%', #{memberEmail}, '%'))
     </select>
 
     <select id="findId" parameterType="memberDto" resultType="String">
