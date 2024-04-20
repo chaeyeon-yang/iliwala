@@ -83,4 +83,16 @@ public class AdminController {
         }
         return "index";
     }
+
+    @RequestMapping("/searchEmail")
+    public String searchEmail(Model model, @RequestParam("term") String term) {
+        try {
+            List<MemberDto> memberList = memberService.searchEmail(term);
+            model.addAttribute("members", memberList);
+            model.addAttribute("center",dir+"member");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
+    }
 }
