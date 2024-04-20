@@ -7,6 +7,10 @@
 </head>
 
 <script>
+  function openPwPage(pw) {
+    window.open('<c:url value="/customer/askanswerPw" />', '비밀번호 입력', 'width=430,height=300,location=no,status=no,scrollbars=no');
+  }
+
   let askanswer = {
     init: function () {
       $("#searchBtn").click(() => {
@@ -73,11 +77,11 @@
             묻고답하기
         </a>
         <ul class="dropdown-menu asd">
-          <li><a class="dropdown-item" href="<c:url value="/customer/inquiry"/>">1:1문의</a></li>
+          <li><a class="dropdown-item" href="<c:url value="/customer/answeraskPw"/>">1:1문의</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="<c:url value="/customer/askanswer"/>">묻고답하기</a></li>
+          <li><a class="dropdown-item" href="<c:url value="/customer/answeraskPw"/>">묻고답하기</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="<c:url value="/customer/askanswer"/>">FAQ</a></li>
+          <li><a class="dropdown-item" href="<c:url value="/customer/answeraskPw"/>">FAQ</a></li>
         </ul>
       </li>
     </ul>
@@ -101,10 +105,10 @@
 
       <c:forEach var="q" items="${qnaList}" varStatus="loop">
         <tr>
-          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${loop.index + 1}</a></td>
-          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}"><img src="<c:url value="/img/customer/icon_sct.gif"/>">${q.qnaTitle}</a></td>
-          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${q.qnaName}</a></td>
-          <td><a style="color: gray" href="<c:url value="/notice/get"/>?no=${q.qnaIdx}">${q.qnaDate}</a></td>
+          <td onclick="openPwPage()">${loop.index + 1}</td>
+          <td><img src="<c:url value="/img/customer/icon_sct.gif"/>">${q.qnaTitle}</td>
+          <td onclick="openPwPage()">${q.qnaName}</td>
+          <td onclick="openPwPage()">${q.qnaDate}</td>
         </tr>
       </c:forEach>
     </table>

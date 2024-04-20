@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -80,4 +81,20 @@ public class CustomerController {
         }
         return "index";
     }
+
+    @RequestMapping("/askanswerPw")
+    public String askanswerPw() {
+        return dir+"askanswerPw";
+    }
+
+//    @ResponseBody
+//    @RequestMapping("/checkPw")
+//    public Integer checkPw(@RequestParam("qnaPw") String qnaPw) throws Exception {
+//        // 1: 유효한 게시글 비밀번호, 0: 유효하지 않은 게시글 비밀번호
+//        QnaDto qnaDto = qnaService.enterPw(qnaPw);
+//        if (qnaPw.equals(qnaDto)) {
+//            return 1;
+//        }
+//        return 0;
+//    }
 }
