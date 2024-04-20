@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends HanaRepository<String, MemberDto> {
     String findId(MemberDto memberDto) throws Exception;
     String findPw(MemberDto memberDto) throws Exception;
+
+    Integer memberCnt() throws Exception;
 }

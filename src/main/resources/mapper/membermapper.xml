@@ -9,6 +9,11 @@
     <select id="select" resultType="memberDto">
         SELECT * FROM company_member
     </select>
+
+    <select id="memberCnt" resultType="Integer">
+        SELECT count(*) FROM company_member;
+    </select>
+
     <select id="findId" parameterType="memberDto" resultType="String">
         select member_id from company_member where member_name=#{memberName} and member_email=#{memberEmail};
     </select>
