@@ -48,11 +48,11 @@ public class AdminController {
         }
     }
 
-//    @RequestMapping("/member")
-//    public String member(Model model) throws Exception {
-//        List<MemberDto> members = memberService.get();
-//        model.addAttribute("members", members);
-//        model.addAttribute("center", dir+"member");
-//        return "index";
-//    }
+    @RequestMapping("/member")
+    public String member(Model model) throws Exception {
+        List<MemberDto> members = memberService.get();
+        model.addAttribute("members", members);
+        model.addAttribute("center", dir+"member");
+        return "index";
+    }
 }
