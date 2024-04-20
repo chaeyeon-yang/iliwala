@@ -19,7 +19,7 @@
 				} else if (searchOption === "email") {
 					window.location.href = '<c:url value="/admin/searchEmail"/>?term=' + encodeURIComponent(searchTerm);
 				} else {
-					window.location.href = '<c:url value="/notice/searchContent"/>?term=' + encodeURIComponent(searchTerm);
+					window.location.href = '<c:url value="/admin/searchAll"/>?term=' + encodeURIComponent(searchTerm);
 				}
 			})
 		}

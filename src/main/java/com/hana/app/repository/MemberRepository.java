@@ -16,4 +16,5 @@ public interface MemberRepository extends HanaRepository<String, MemberDto> {
     List<MemberDto> searchId(String text) throws Exception;
     List<MemberDto> searchName(String text) throws Exception;
     List<MemberDto> searchEmail(String text) throws Exception;
+    List<MemberDto> searchAll(String text) throws Exception;
 }

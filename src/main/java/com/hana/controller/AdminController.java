@@ -95,4 +95,16 @@ public class AdminController {
         }
         return "index";
     }
+
+    @RequestMapping("/searchAll")
+    public String searchAll(Model model, @RequestParam("term") String term) {
+        try {
+            List<MemberDto> memberList = memberService.searchAll(term);
+            model.addAttribute("members", memberList);
+            model.addAttribute("center",dir+"member");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
+    }
 }

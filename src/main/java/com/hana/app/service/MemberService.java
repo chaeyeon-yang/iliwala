@@ -64,4 +64,8 @@ public class MemberService implements HanaService<String, MemberDto> {
     public List<MemberDto> searchEmail(String text) throws Exception {
         return memberRepository.searchEmail(text);
     }
+    // 회원 검색 - 전체
+    public List<MemberDto> searchAll(String text) throws Exception {
+        return memberRepository.searchAll(text);
+    }
 }
