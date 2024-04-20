@@ -51,4 +51,9 @@ public class MemberService implements HanaService<String, MemberDto> {
     public Integer memberCnt() throws Exception {
         return memberRepository.memberCnt();
     }
+
+    // 회원 검색 - 아이디
+    public List<MemberDto> searchId(String text) throws Exception {
+        return memberRepository.searchId(text);
+    }
 }

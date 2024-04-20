@@ -5,7 +5,25 @@
 <head>
 	<link rel="stylesheet" href="<c:url value="/css/admin/admin.css"/>">
 </head>
-	
+
+<script>
+	let memberManage = {
+		init: function () {
+			$("#searchBtn").click(() => {
+				let searchOption = $("select[name='searchOption'] option:selected").val();
+				let searchTerm = $("#searchTerm").val();
+				if (searchOption === "id") {
+					window.location.href = '<c:url value="/admin/searchId"/>?term=' + encodeURIComponent(searchTerm);
+				} else {
+					window.location.href = '<c:url value="/notice/searchContent"/>?term=' + encodeURIComponent(searchTerm);
+				}
+			})
+		}
+	};
+	$(function () {
+		memberManage.init();
+	});
+</script>
   <!-- 메인 -->
   <!-- COMMON -->
   
@@ -39,16 +57,14 @@
   		</div>
   		<div class="adminDiv">
   			검색 옵션 
-  			<select name="search_select" id="search_select">
+  			<select name="searchOption" id="search_select">
           <option value="all" selected>전체</option>
           <option value="id">아이디</option>
           <option value="name">성명</option>
           <option value="email">이메일</option>
-          <option value="phone">핸드폰</option>
-          <option value="address">주소</option>
         </select>
-        <input type="text" name="search_keyword" id="search_keyword" value="">
-        <input type="image" src="<c:url value="/img/community/search.gif"/>">
+        <input type="text" name="search_keyword" id="searchTerm" value="">
+		<input id="searchBtn" typeof="button" style="background-image: url('<c:url value="/img/community/search.gif"/>'); background-size: cover; width: 26px; height: 25px; border: 1px solid black; margin-bottom: 5px">
   		</div>
   		<div class="adminDiv">
   		  정렬

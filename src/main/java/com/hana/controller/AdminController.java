@@ -3,6 +3,7 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.AdminDto;
 import com.hana.app.data.dto.MemberDto;
+import com.hana.app.data.dto.NoticeDto;
 import com.hana.app.service.AdminService;
 import com.hana.app.service.MemberService;
 import jakarta.servlet.http.HttpSession;
@@ -56,6 +57,18 @@ public class AdminController {
         model.addAttribute("memberCnt", memberCnt);
         model.addAttribute("members", members);
         model.addAttribute("center", dir+"member");
+        return "index";
+    }
+
+    @RequestMapping("/searchId")
+    public String searchId(Model model, @RequestParam("term") String term) {
+        try {
+            List<MemberDto> memberList = memberService.searchId(term);
+            model.addAttribute("members", memberList);
+            model.addAttribute("center",dir+"member");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "index";
     }
 }

@@ -9,9 +9,12 @@
     <select id="select" resultType="memberDto">
         SELECT * FROM company_member
     </select>
-
     <select id="memberCnt" resultType="Integer">
         SELECT count(*) FROM company_member;
+    </select>
+
+    <select id="searchId" parameterType="String" resultType="memberDto">
+        select * from company_member where member_id like lower(concat('%', #{memberId}, '%'))
     </select>
 
     <select id="findId" parameterType="memberDto" resultType="String">
