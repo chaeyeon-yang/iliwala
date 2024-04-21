@@ -7,25 +7,36 @@
   <link rel="stylesheet" href="<c:url value="/css/admin/admin.css" />">
 </head>
 <script>
-    let writeNotice = {
+    let modifyNotice = {
         init: function () {
-            $("#registBtn").click(() => {
+            $("#modifyBtn").click(() => {
                 this.send();
             });
         },
         send: function () {
             // CKEditor에서 내용 가져오기
             let data = CKEDITOR.instances.noticeContent.getData();
-            // 폼 데이터에 CKEditor 내용 추가
-            $("#noticeContent").val(data);
-            $("#noticeMemberId").val("admin");
-            // 폼 전송
-            $("#adminSection").submit();
-            alert("공지사항이 등록되었습니다.");
+            let idx = parseInt($("#noticeIdx").text());
+
+            $.ajax({
+                url: "<c:url value="/admin/modifyNotice" />",
+                type: "POST",
+                data: JSON.stringify({ noticeContent: data, idx: idx }),
+                contentType: "application/json",
+                success: function(res) {
+                    if(res) {
+                        alert("공지사항이 수정되었습니다.");
+                        window.location.href = "<c:url value="/admin/noticeDetail"/>?no="+idx;
+                    }
+                },
+                error: function(err) {
+                    console.error("수정 에러 발생: ", err);
+                }
+            });
         }
     }
     $(function () {
-        writeNotice.init();
+        modifyNotice.init();
     })
 
 </script>
@@ -53,7 +64,7 @@
   	<div id="adminSide">
   	  <ul>
 	  	  <li><a href="<c:url value="/admin/member"/>">회원 관리</a></li>
-	  	  <li><a href="./admin_notice.html" class="adminSideActive">공지사항 관리</a></li>
+	  	  <li><a href="<c:url value="/admin/notice"/>" class="adminSideActive">공지사항 관리</a></li>
 	  	  
   	  </ul>
   	</div>
@@ -73,9 +84,12 @@
         <div class="hidden">
             <input type="hidden" name="noticeMemberId" id="noticeMemberId" />
         </div>
+        <div style="visibility: hidden" id="noticeIdx">
+            ${notice.noticeIdx}
+        </div>
         <div class="noticeViewBtns adminDiv2">
             <div>
-                <a href="/admin_notice_modify?notice_idx=1">수정</a>
+                <button type="button" id="modifyBtn">수정</button>
                 <a href="/admin_notice_delete?notice_idx=1">삭제</a>
             </div>
             <div>

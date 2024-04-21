@@ -82,4 +82,9 @@
             </when>
         </choose>
     </select>
+
+    <!--수정-->
+    <update id="update" parameterType="noticeDto">
+        UPDATE company_notice SET notice_content=#{noticeContent} WHERE notice_idx=#{noticeIdx}
+    </update>
 </mapper>

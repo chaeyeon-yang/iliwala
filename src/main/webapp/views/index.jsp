@@ -142,10 +142,10 @@
         고객지원 : 010-2222-3333, FAX : 070-888-5555, EMAIL : support@gmail.com, 사업자등록번호 : 100-02-00033, 통신판매업 : 제1111-경기-00000호<br>COPYRIGHT(C) 2021 CODINGGANSA. ALL RIGHT RESERVED.</span>
     </div>
     <div>
-      <img src="./img/mf-icon01.png" alt="">
-      <img src="./img/mf-icon02.png" alt="">
-      <img src="./img/mf-icon03.png" alt="">
-      <img src="./img/mf-icon04.png" alt="">
+      <img src="<c:url value="/img/mf-icon01.png"/>" alt="">
+      <img src="<c:url value="/img/mf-icon02.png"/>" alt="">
+      <img src="<c:url value="/img/mf-icon03.png"/>" alt="">
+      <img src="<c:url value="/img/mf-icon04.png"/>" alt="">
     </div>
   </div>
 </div>
