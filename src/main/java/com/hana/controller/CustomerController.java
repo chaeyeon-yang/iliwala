@@ -6,6 +6,7 @@ import com.hana.app.data.dto.One2oneDto;
 import com.hana.app.data.dto.QnaDto;
 import com.hana.app.service.One2OneService;
 import com.hana.app.service.QnaService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +28,21 @@ public class CustomerController {
 
     // 1:1 문의
     @RequestMapping("/inquiry")
-    public String inquiry(Model model) throws Exception {
+    public String inquiry(Model model, HttpSession httpSession) throws Exception {
+        if (httpSession.getAttribute("memberId") == null) {
+            model.addAttribute("showAlert", "로그인이 필요한 서비스입니다.");
+        }
         model.addAttribute("center",dir+"inquiry");
+        return "index";
+    }
+
+    // faq
+    @RequestMapping("/faq")
+    public String faq(Model model, HttpSession httpSession) throws Exception {
+        if (httpSession.getAttribute("memberId") == null) {
+            model.addAttribute("showAlert", "로그인이 필요한 서비스입니다.");
+        }
+        model.addAttribute("center",dir+"faq");
         return "index";
     }
 
@@ -40,7 +54,10 @@ public class CustomerController {
 
     // 묻고 답하기
     @RequestMapping("/askanswer")
-    public String askanswer(Model model) throws Exception {
+    public String askanswer(Model model, HttpSession httpSession) throws Exception {
+        if (httpSession.getAttribute("memberId") == null) {
+            model.addAttribute("showAlert", "로그인이 필요한 서비스입니다.");
+        }
         List<QnaDto> qnaList = qnaService.get();
         model.addAttribute("qnaList",qnaList);
         model.addAttribute("center",dir+"askanswer");

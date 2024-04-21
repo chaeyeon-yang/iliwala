@@ -114,7 +114,7 @@
           <div class="dropdown-content">
             <a href="<c:url value="/customer/inquiry"/>">1:1문의</a>
             <a href="<c:url value="/customer/askanswer"/>">묻고답하기</a>
-            <a href="./customer/customer03.html">FAQ</a>
+            <a href="<c:url value="/customer/faq"/>">FAQ</a>
           </div>
         </li>
       </ul>
