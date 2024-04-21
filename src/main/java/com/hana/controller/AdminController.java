@@ -153,7 +153,7 @@ public class AdminController {
     @RequestMapping("/writeNoticeImpl")
     public String writeNoticeImpl(Model model, NoticeDto noticeDto) throws Exception {
         noticeService.add(noticeDto);
-        return "index";
+        return "redirect:/admin/notice";
     }
 
     // 회원 관리
