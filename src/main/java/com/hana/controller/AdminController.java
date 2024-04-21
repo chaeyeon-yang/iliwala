@@ -152,7 +152,6 @@ public class AdminController {
     @RequestMapping("/writeNoticeImpl")
     public String writeNoticeImpl(Model model, NoticeDto noticeDto) throws Exception {
         noticeService.add(noticeDto);
-        model.addAttribute("center",dir+"writeNotice");
         return "index";
     }
 
@@ -224,6 +223,18 @@ public class AdminController {
     public List<NoticeDto> noticeOrderByRegDate(@RequestParam("orderOption") Integer option) {
         try {
             List<NoticeDto> noticeList = noticeService.orderByRegDate(option);
+            return noticeList ;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // 보기
+    @ResponseBody
+    @RequestMapping("/noticePage")
+    public List<NoticeDto> noticePage(@RequestBody PageDto pageDto) {
+        try {
+            List<NoticeDto> noticeList = noticeService.page(pageDto);
             return noticeList ;
         } catch (Exception e) {
             throw new RuntimeException(e);

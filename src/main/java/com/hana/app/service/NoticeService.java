@@ -1,6 +1,8 @@
 package com.hana.app.service;
 
+import com.hana.app.data.dto.MemberDto;
 import com.hana.app.data.dto.NoticeDto;
+import com.hana.app.data.dto.PageDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.NoticeRepository;
 import lombok.RequiredArgsConstructor;
@@ -70,5 +72,10 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
     }
     public List<NoticeDto> orderByRegDate(Integer option) throws Exception {
         return noticeRepository.orderByRegDate(option);
+    }
+
+    // 공지사항 보기
+    public List<NoticeDto> page(PageDto pageDto) throws Exception {
+        return noticeRepository.page(pageDto);
     }
 }

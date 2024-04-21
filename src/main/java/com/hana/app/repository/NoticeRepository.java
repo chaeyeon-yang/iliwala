@@ -2,6 +2,7 @@ package com.hana.app.repository;
 
 import com.hana.app.data.dto.MemberDto;
 import com.hana.app.data.dto.NoticeDto;
+import com.hana.app.data.dto.PageDto;
 import com.hana.app.frame.HanaRepository;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -20,4 +21,6 @@ public interface NoticeRepository extends HanaRepository<Integer, NoticeDto> {
     List<NoticeDto> adminSearchAll (String text) throws Exception;
     List<NoticeDto> orderById (Integer option) throws Exception;
     List<NoticeDto> orderByRegDate (Integer option) throws Exception;
+    List<NoticeDto> page (PageDto pageDto) throws Exception;
+
 }
