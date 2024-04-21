@@ -131,7 +131,7 @@
   	<div id="adminSide">
   	  <ul>
 	  	  <li><a href="<c:url value="/admin/member" />" class="adminSideActive">회원 관리</a></li>
-	  	  <li><a href="./admin_notice.html">공지사항 관리</a></li>
+	  	  <li><a href="<c:url value="/admin/notice"/>">공지사항 관리</a></li>
   	  </ul>
   	</div>
   	<!-- 메인 -->
@@ -192,7 +192,6 @@
 					  </c:forEach>
   			  </tbody>
   			</table>
-			<div class="d-flex justify-content-end"><a href="<c:url value="/admin/writeNotice"/>">공지글 쓰기</a></div>
   		</div>
   	</div>
   </div>

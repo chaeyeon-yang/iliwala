@@ -150,10 +150,20 @@ public class AdminController {
     }
 
     @RequestMapping("/writeNoticeImpl")
-
     public String writeNoticeImpl(Model model, NoticeDto noticeDto) throws Exception {
         noticeService.add(noticeDto);
         model.addAttribute("center",dir+"writeNotice");
+        return "index";
+    }
+
+    // 회원 관리
+    @RequestMapping("/notice")
+    public String notice(Model model) throws Exception {
+        List<NoticeDto> list = noticeService.get();
+        Integer noticeCnt = noticeService.noticeCnt();
+        model.addAttribute("notices", list);
+        model.addAttribute("noticeCnt", noticeCnt);
+        model.addAttribute("center",dir+"notice");
         return "index";
     }
 }
