@@ -166,4 +166,15 @@ public class AdminController {
         model.addAttribute("center",dir+"notice");
         return "index";
     }
+
+    @ResponseBody
+    @RequestMapping("/searchTitle")
+    public ResponseEntity<List<NoticeDto>> searchTitle(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchTitle(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -21,4 +21,9 @@
     <select id="noticeCnt" resultType="Integer">
         SELECT count(*) FROM company_notice;
     </select>
+
+    <!--검색-->
+    <select id="adminSearchTitle" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_title like lower(concat('%', #{noticeTitle}, '%'))
+    </select>
 </mapper>
