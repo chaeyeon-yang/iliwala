@@ -93,11 +93,12 @@
     var tbody = $("<tbody></tbody>");
 
     notices.forEach(function(n, index) {
+      var noticeDetailUrl = '<c:url value="/admin/noticeDetail"/>';
       var row = "<tr>" +
-              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" +  (index + 1) + "</a></td>" +
-              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeTitle + "</a></td>" +
-              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeMemberId + "</a></td>" +
-              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeDate + "</a></td>" +
+              "<td><a href='" + noticeDetailUrl + "?no=" + n.noticeIdx + "'>" +  (index + 1) + "</a></td>" +
+              "<td><a href='" + noticeDetailUrl + "?no=" + n.noticeIdx + "'>" + n.noticeTitle + "</a></td>" +
+              "<td><a href='" + noticeDetailUrl + "?no=" + n.noticeIdx + "'>" + n.noticeMemberId + "</a></td>" +
+              "<td><a href='" + noticeDetailUrl + "?no=" + n.noticeIdx + "'>" + n.noticeDate + "</a></td>" +
               "</tr>";
       tbody.append(row);
     });
@@ -105,6 +106,8 @@
     // 기존의 tbody를 비우고 새로 생성된 tbody를 페이지에 추가
     $(".adminTable tbody").replaceWith(tbody);
   }
+
+
 </script>
 
   <!-- 메인 -->
