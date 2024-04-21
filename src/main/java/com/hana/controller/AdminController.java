@@ -208,4 +208,15 @@ public class AdminController {
             throw new RuntimeException(e);
         }
     }
+
+    @ResponseBody
+    @RequestMapping("/noticeOrderById")
+    public List<NoticeDto> noticeOrderById(@RequestParam("orderOption") Integer option) {
+        try {
+            List<NoticeDto> noticeList = noticeService.orderById(option);
+            return noticeList ;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

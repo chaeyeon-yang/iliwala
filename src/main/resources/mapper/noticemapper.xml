@@ -37,4 +37,13 @@
             notice_content like lower(concat('%', #{noticeContent}, '%')) or
             notice_member_id like lower(concat('%', #{noticeMemberId}, '%'))
     </select>
+
+    <!--정렬-->
+    <select id="orderById" parameterType="Integer" resultType="noticeDto">
+        SELECT * FROM company_notice
+        ORDER BY notice_member_id
+        <if test="orderOption == 1">
+            DESC
+        </if>
+    </select>
 </mapper>
