@@ -115,7 +115,7 @@
       <c:forEach var="q" items="${qnaList}" varStatus="loop">
         <tr>
           <td onclick="openPwPage()">${loop.index + 1}</td>
-          <td><img src="<c:url value="/img/customer/icon_sct.gif"/>">${q.qnaTitle}</td>
+          <td onclick="openPwPage()"><img src="<c:url value="/img/customer/icon_sct.gif"/>">${q.qnaTitle}</td>
           <td onclick="openPwPage()">${q.qnaName}</td>
           <td onclick="openPwPage()">${q.qnaDate}</td>
         </tr>
