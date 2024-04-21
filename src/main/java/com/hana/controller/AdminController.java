@@ -4,25 +4,27 @@ package com.hana.controller;
 import com.hana.app.data.dto.*;
 import com.hana.app.service.AdminService;
 import com.hana.app.service.MemberService;
+import com.hana.app.service.NoticeService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/admin")
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class AdminController {
     String dir = "admin/";
 
     private final AdminService adminService;
     private final MemberService memberService;
+    private final NoticeService noticeService;
 
     @RequestMapping("")
     public String login(Model model) throws Exception {
@@ -138,5 +140,20 @@ public class AdminController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    // 공지글쓰기
+    @RequestMapping("/writeNotice")
+    public String writeNotice(Model model) {
+        model.addAttribute("center",dir+"writeNotice");
+        return "index";
+    }
+
+    @RequestMapping("/writeNoticeImpl")
+
+    public String writeNoticeImpl(Model model, NoticeDto noticeDto) throws Exception {
+        noticeService.add(noticeDto);
+        model.addAttribute("center",dir+"writeNotice");
+        return "index";
     }
 }
