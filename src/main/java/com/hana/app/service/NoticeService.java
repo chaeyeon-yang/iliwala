@@ -49,4 +49,19 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
     public Integer noticeCnt() throws Exception {
         return noticeRepository.noticeCnt();
     }
+
+    // ----------관리자
+    // 공지사항 검색
+    public List<NoticeDto> adminSearchTitle(String term) throws Exception {
+        return noticeRepository.adminSearchTitle(term);
+    }
+    public List<NoticeDto> adminSearchContent(String term) throws Exception {
+        return noticeRepository.adminSearchContent(term);
+    }
+    public List<NoticeDto> adminSearchId(String term) throws Exception {
+        return noticeRepository.adminSearchId(term);
+    }
+    public List<NoticeDto> adminSearchAll(String term) throws Exception {
+        return noticeRepository.adminSearchAll(term);
+    }
 }

@@ -21,4 +21,20 @@
     <select id="noticeCnt" resultType="Integer">
         SELECT count(*) FROM company_notice;
     </select>
+
+    <!--검색-->
+    <select id="adminSearchTitle" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_title like lower(concat('%', #{noticeTitle}, '%'))
+    </select>
+    <select id="adminSearchContent" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_content like lower(concat('%', #{noticeContent}, '%'))
+    </select>
+    <select id="adminSearchId" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_member_id like lower(concat('%', #{noticeMemberId}, '%'))
+    </select>
+    <select id="adminSearchAll" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_title like lower(concat('%', #{noticeTitle}, '%')) or
+            notice_content like lower(concat('%', #{noticeContent}, '%')) or
+            notice_member_id like lower(concat('%', #{noticeMemberId}, '%'))
+    </select>
 </mapper>

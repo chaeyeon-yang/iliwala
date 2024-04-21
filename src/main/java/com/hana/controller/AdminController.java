@@ -166,4 +166,46 @@ public class AdminController {
         model.addAttribute("center",dir+"notice");
         return "index";
     }
+
+    @ResponseBody
+    @RequestMapping("/searchTitle")
+    public ResponseEntity<List<NoticeDto>> searchTitle(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchTitle(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/adminSearchContent")
+    public ResponseEntity<List<NoticeDto>> adminSearchContent(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchContent(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @ResponseBody
+    @RequestMapping("/adminSearchId")
+    public ResponseEntity<List<NoticeDto>> adminSearchId(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchId(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @ResponseBody
+    @RequestMapping("/adminSearchAll")
+    public ResponseEntity<List<NoticeDto>> adminSearchAll(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchAll(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
