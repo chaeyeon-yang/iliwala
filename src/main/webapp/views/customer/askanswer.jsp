@@ -2,8 +2,17 @@
 <!-- JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
 <head>
-  <link rel="stylesheet" href="<c:url value="/css/customer/customer02.css"/>">
+  <script>
+    <c:if test="${not empty showAlert}">
+    window.onload = function() {
+      alert("${showAlert}")
+      window.location.href = "<c:url value='/member/login'/>";
+    }
+    </c:if>
+  </script>
+  <link rel="stylesheet" href="<c:url value='/css/customer/customer02.css'/>">
 </head>
 
 <script>

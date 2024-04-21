@@ -25,6 +25,12 @@ public class MemberController {
         return "index";
     }
 
+    @RequestMapping("/logout")
+    public String logout(Model model, HttpSession httpSession) {
+        httpSession.removeAttribute("memberId");
+        return "index";
+    }
+
     @ResponseBody
     @RequestMapping("/loginimpl")
     public Integer loginimpl(Model model,@RequestParam("memberId") String id, @RequestParam("memberPw") String pw, HttpSession httpSession) {
