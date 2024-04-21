@@ -64,4 +64,8 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
     public List<NoticeDto> adminSearchAll(String term) throws Exception {
         return noticeRepository.adminSearchAll(term);
     }
+    // 공지사항 정렬
+    public List<NoticeDto> orderById(Integer option) throws Exception {
+        return noticeRepository.orderById(option);
+    }
 }

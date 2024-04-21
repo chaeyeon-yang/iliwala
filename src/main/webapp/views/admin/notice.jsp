@@ -39,28 +39,26 @@
         });
       });
       $("#orderOption").change(() => {
-        notice.sortMembers();
+        notice.sortNotices();
       });
       $("#pageOption").change(() => {
         notice.pageMembers();
       });
     },
-    sortMembers: function () {
+    sortNotices: function () {
       let orderOption = $("select[name='orderOption'] option:selected").val();
-      let members = this.members;
 
       let url;
       if (orderOption === "0" || orderOption === "1") {
-        url = "/admin/orderById";
+        url = "/admin/noticeOrderById";
       } else if (orderOption === "2" || orderOption === "3") {
         url = "/admin/orderByRegDate";
       }
 
       $.ajax({
-        url: url,
+        url: url + "?orderOption=" + encodeURIComponent(orderOption),
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ orderOption: orderOption, members: members }),
         success: function(response) {
           updateTable(response);
         },
