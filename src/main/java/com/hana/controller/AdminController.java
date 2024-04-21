@@ -198,4 +198,14 @@ public class AdminController {
             throw new RuntimeException(e);
         }
     }
+    @ResponseBody
+    @RequestMapping("/adminSearchAll")
+    public ResponseEntity<List<NoticeDto>> adminSearchAll(@RequestParam("term") String noticeTitle) {
+        try {
+            List<NoticeDto> noticeList = noticeService.adminSearchAll(noticeTitle);
+            return ResponseEntity.ok().body(noticeList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

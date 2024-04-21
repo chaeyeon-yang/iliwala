@@ -23,7 +23,7 @@
         } else if (searchOption === "id") {
           searchUrl = '<c:url value="/admin/adminSearchId"/>';
         } else {
-          searchUrl = '<c:url value="/admin/searchAll"/>';
+          searchUrl = '<c:url value="/admin/adminSearchAll"/>';
         }
 
         $.ajax({
