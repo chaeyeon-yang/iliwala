@@ -34,6 +34,17 @@
     <select id="findPw" parameterType="memberDto" resultType="String">
         select member_pw from company_member where member_name=#{memberName} and member_id=#{memberId} and member_email=#{memberEmail};
     </select>
+
+    <select id="orderById" parameterType="searchDto" resultType="memberDto">
+        SELECT * FROM company_member
+        ORDER BY member_id
+        <if test="orderOption == 1">
+            DESC
+        </if>
+    </select>
+
+
+
     <insert id="insert" parameterType="memberDto">
         INSERT INTO company_member VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())
     </insert>

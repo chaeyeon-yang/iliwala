@@ -8,25 +8,82 @@
 
 <script>
 	let memberManage = {
+		members: null,
 		init: function () {
 			$("#searchBtn").click(() => {
 				let searchOption = $("select[name='searchOption'] option:selected").val();
 				let searchTerm = $("#searchTerm").val();
+				let searchUrl;
+
 				if (searchOption === "id") {
-					window.location.href = '<c:url value="/admin/searchId"/>?term=' + encodeURIComponent(searchTerm);
+					searchUrl = '<c:url value="/admin/searchId"/>';
 				} else if (searchOption === "name") {
-					window.location.href = '<c:url value="/admin/searchName"/>?term=' + encodeURIComponent(searchTerm);
+					searchUrl = '<c:url value="/admin/searchName"/>';
 				} else if (searchOption === "email") {
-					window.location.href = '<c:url value="/admin/searchEmail"/>?term=' + encodeURIComponent(searchTerm);
+					searchUrl = '<c:url value="/admin/searchEmail"/>';
 				} else {
-					window.location.href = '<c:url value="/admin/searchAll"/>?term=' + encodeURIComponent(searchTerm);
+					searchUrl = '<c:url value="/admin/searchAll"/>';
 				}
-			})
+
+				$.ajax({
+					url: searchUrl + "?term=" + encodeURIComponent(searchTerm),
+					type: "GET",
+					success: function(response) {
+						memberManage.members = response;
+						updateTable(response);
+					},
+					error: function(err) {
+						console.error("검색 에러 발생: ", err);
+					}
+				});
+			});
+			$("#orderOption").change(() => {
+				memberManage.sortMembers();
+			});
+		},
+		sortMembers: function () {
+			console.log("실행한다다다다다다다")
+			let orderOption = $("select[name='orderOption'] option:selected").val();
+			let members = this.members;
+
+			$.ajax({
+				url: "/admin/orderById",
+				type: "POST",
+				contentType: "application/json",
+				data: JSON.stringify({ orderOption: orderOption, members: members }),
+				success: function(response) {
+					console.log(orderOption)
+					console.log("정렬된 결과: ", response);
+					updateTable(response);
+				},
+				error: function(err) {
+					console.error("에러 발생: ", err);
+				}
+			});
+
 		}
 	};
 	$(function () {
 		memberManage.init();
 	});
+
+	function updateTable(members) {
+		var tbody = $("<tbody></tbody>");
+
+		members.forEach(function(member) {
+			var row = "<tr>" +
+					"<td>" + member.memberId + "</td>" +
+					"<td>" + member.memberName + "</td>" +
+					"<td>" + member.memberEmail + "</td>" +
+					"<td>" + member.memberBirthDate + "</td>" +
+					"<td>" + member.memberJoinDate + "</td>" +
+					"</tr>";
+			tbody.append(row); 
+		});
+
+		// 기존의 tbody를 비우고 새로 생성된 tbody를 페이지에 추가
+		$(".adminTable tbody").replaceWith(tbody);
+	}
 </script>
   <!-- 메인 -->
   <!-- COMMON -->
@@ -72,9 +129,9 @@
   		</div>
   		<div class="adminDiv">
   		  정렬
-  		  <select class="size" name="order_select" id="order_select">
-          <option value="id_asc" selected>아이디 오름차순</option>
-          <option value="id_desc">아이디 내림차순</option>
+  		  <select class="size" name="orderOption" id="orderOption">
+          <option value=0 selected>아이디 오름차순</option>
+          <option value=1>아이디 내림차순</option>
           <option value="join_date_asc">가입일 오름차순</option>
           <option value="join_date_desc">가입일 내림차순</option>
         </select>
@@ -100,15 +157,16 @@
   			  	</tr>
   			  </thead>
   			  <tbody>
-				  <c:forEach var="m" items="${members}" varStatus="loop">
-					  <tr>
-						  <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${m.memberId}</a></td>
-						  <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${m.memberName}</a></td>
-						  <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${m.memberEmail}</a></td>
-						  <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${m.memberBirthDate}</a></td>
-						  <td><a href="<c:url value="/notice/get"/>?no=${n.noticeIdx}">${m.memberJoinDate}</a></td>
-					  </tr>
-				  </c:forEach>
+					  <c:forEach var="m" items="${members}" varStatus="loop">
+						  <tr>
+							  <td>${m.memberId}</td>
+							  <td>${m.memberName}</td>
+							  <td>${m.memberEmail}</td>
+							  <td>${m.memberBirthDate}</td>
+							  <td>${m.memberJoinDate}</td>
+						  </tr>
+					  </c:forEach>
+
   			  </tbody>
   			</table>
   		</div>
