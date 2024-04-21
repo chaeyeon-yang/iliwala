@@ -1,12 +1,14 @@
 package com.hana.app.service;
 
 import com.hana.app.data.dto.MemberDto;
+import com.hana.app.data.dto.SearchDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -67,5 +69,10 @@ public class MemberService implements HanaService<String, MemberDto> {
     // 회원 검색 - 전체
     public List<MemberDto> searchAll(String text) throws Exception {
         return memberRepository.searchAll(text);
+    }
+
+    // 회원 정렬 - 아이디
+    public List<MemberDto> orderById(SearchDto searchDto) throws Exception {
+        return memberRepository.orderById(searchDto);
     }
 }

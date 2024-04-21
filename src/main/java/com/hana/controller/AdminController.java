@@ -4,17 +4,19 @@ package com.hana.controller;
 import com.hana.app.data.dto.AdminDto;
 import com.hana.app.data.dto.MemberDto;
 import com.hana.app.data.dto.NoticeDto;
+import com.hana.app.data.dto.SearchDto;
 import com.hana.app.service.AdminService;
 import com.hana.app.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/admin")
 @Controller
@@ -60,51 +62,62 @@ public class AdminController {
         return "index";
     }
 
+    // 검색
     @RequestMapping("/searchId")
-    public String searchId(Model model, @RequestParam("term") String term) {
+    @ResponseBody
+    public ResponseEntity<List<MemberDto>> searchId(Model model, @RequestParam("term") String term) {
         try {
             List<MemberDto> memberList = memberService.searchId(term);
-            model.addAttribute("members", memberList);
-            model.addAttribute("center",dir+"member");
+            return ResponseEntity.ok().body(memberList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "index";
     }
 
     @RequestMapping("/searchName")
-    public String searchName(Model model, @RequestParam("term") String term) {
+    @ResponseBody
+    public ResponseEntity<List<MemberDto>> searchName(Model model, @RequestParam("term") String term, MemberDto memberDto) {
         try {
             List<MemberDto> memberList = memberService.searchName(term);
-            model.addAttribute("members", memberList);
-            model.addAttribute("center",dir+"member");
+            return ResponseEntity.ok().body(memberList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "index";
     }
 
-    @RequestMapping("/searchEmail")
-    public String searchEmail(Model model, @RequestParam("term") String term) {
+    // 검색
+    @GetMapping("/searchEmail")
+    @ResponseBody
+    public ResponseEntity<List<MemberDto>> searchEmail(@RequestParam("term") String term) {
         try {
             List<MemberDto> memberList = memberService.searchEmail(term);
-            model.addAttribute("members", memberList);
-            model.addAttribute("center",dir+"member");
+            return ResponseEntity.ok().body(memberList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "index";
     }
 
+
     @RequestMapping("/searchAll")
-    public String searchAll(Model model, @RequestParam("term") String term) {
+    @ResponseBody
+    public ResponseEntity<List<MemberDto>> searchAll(Model model, @RequestParam("term") String term) {
         try {
             List<MemberDto> memberList = memberService.searchAll(term);
-            model.addAttribute("members", memberList);
-            model.addAttribute("center",dir+"member");
+            return ResponseEntity.ok().body(memberList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "index";
+    }
+
+    // 정렬
+    @ResponseBody
+    @RequestMapping("/orderById")
+    public List<MemberDto> orderById(Model model, @RequestBody SearchDto orderRequest) {
+        try {
+            List<MemberDto> memberList = memberService.orderById(orderRequest);
+            return memberList ;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
