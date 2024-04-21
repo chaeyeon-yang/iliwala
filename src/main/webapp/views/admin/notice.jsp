@@ -72,7 +72,7 @@
       let pageOption = $("select[name='pageOption'] option:selected").val();
 
       $.ajax({
-        url: "/admin/page",
+        url: "/admin/noticePage",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ orderOption: orderOption, pageOption: pageOption }),
@@ -157,8 +157,8 @@
           <select class="size" name="orderOption" id="orderOption">
             <option value=0 selected>아이디 오름차순</option>
             <option value=1>아이디 내림차순</option>
-            <option value=2>가입일 오름차순</option>
-            <option value=3>가입일 내림차순</option>
+            <option value=2>작성일 오름차순</option>
+            <option value=3>작성일 내림차순</option>
           </select>
         </div>
         <div class="adminDiv2" id="tableTitle">
