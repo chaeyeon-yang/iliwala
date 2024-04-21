@@ -17,9 +17,6 @@
 <script>
   let inquiry = {
     init: function () {
-      if (msg) {
-
-      }
       $("#okBtn").click(() => {
         this.send();
       })

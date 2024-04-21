@@ -57,7 +57,7 @@
         <span><a href="<c:url value="/member/logout"/>">LOGOUT</a></span>
       </c:otherwise>
     </c:choose>
-    <span><a href="<c:url value="/member/join"/>">JOIN</a></span>
+    <span><a href="<c:url value="/member/join2"/>">JOIN</a></span>
     <span><a href="./company/company03.html">CONTACT US</a></span>
   </div>
 </div>
