@@ -19,4 +19,5 @@ public interface NoticeRepository extends HanaRepository<Integer, NoticeDto> {
     List<NoticeDto> adminSearchId(String text) throws Exception;
     List<NoticeDto> adminSearchAll (String text) throws Exception;
     List<NoticeDto> orderById (Integer option) throws Exception;
+    List<NoticeDto> orderByRegDate (Integer option) throws Exception;
 }

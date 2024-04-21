@@ -68,4 +68,7 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
     public List<NoticeDto> orderById(Integer option) throws Exception {
         return noticeRepository.orderById(option);
     }
+    public List<NoticeDto> orderByRegDate(Integer option) throws Exception {
+        return noticeRepository.orderByRegDate(option);
+    }
 }

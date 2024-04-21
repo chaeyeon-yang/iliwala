@@ -46,4 +46,12 @@
             DESC
         </if>
     </select>
+
+    <select id="orderByRegDate" parameterType="Integer" resultType="noticeDto">
+        SELECT * FROM company_notice
+        ORDER BY notice_date
+        <if test="orderOption == 3">
+            DESC
+        </if>
+    </select>
 </mapper>
