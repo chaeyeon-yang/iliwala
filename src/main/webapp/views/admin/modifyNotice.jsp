@@ -89,11 +89,11 @@
         </div>
         <div class="noticeViewBtns adminDiv2">
             <div>
-                <button type="button" id="modifyBtn">수정</button>
+                <button type="button" id="modifyBtn" style="border: none; background-color: white;">수정</button>
                 <a href="/admin_notice_delete?notice_idx=1">삭제</a>
             </div>
             <div>
-                <a href="/admin_notice">목록</a>
+                <a href="<c:url value="/admin/notice"/>">목록</a>
             </div>
         </div>
   	</form>

@@ -264,11 +264,9 @@ public class AdminController {
                 noticeService.modify(noticeDto1);
                 return 1;
             } else {
-                // 요청 데이터가 올바르지 않을 때 처리
                 return 0;
             }
         } catch (Exception e) {
-            // 예외 처리
             e.printStackTrace();
             return 0;
         }
