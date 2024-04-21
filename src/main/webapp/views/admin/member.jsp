@@ -42,26 +42,30 @@
 			});
 		},
 		sortMembers: function () {
-			console.log("실행한다다다다다다다")
 			let orderOption = $("select[name='orderOption'] option:selected").val();
 			let members = this.members;
 
+			let url;
+			if (orderOption === "0" || orderOption === "1") {
+				url = "/admin/orderById";
+			} else if (orderOption === "2" || orderOption === "3") {
+				url = "/admin/orderByRegDate";
+			}
+
 			$.ajax({
-				url: "/admin/orderById",
+				url: url,
 				type: "POST",
 				contentType: "application/json",
 				data: JSON.stringify({ orderOption: orderOption, members: members }),
 				success: function(response) {
-					console.log(orderOption)
-					console.log("정렬된 결과: ", response);
 					updateTable(response);
 				},
 				error: function(err) {
-					console.error("에러 발생: ", err);
+					console.error("정렬 에러 발생: ", err);
 				}
 			});
-
 		}
+
 	};
 	$(function () {
 		memberManage.init();
@@ -78,7 +82,7 @@
 					"<td>" + member.memberBirthDate + "</td>" +
 					"<td>" + member.memberJoinDate + "</td>" +
 					"</tr>";
-			tbody.append(row); 
+			tbody.append(row);
 		});
 
 		// 기존의 tbody를 비우고 새로 생성된 tbody를 페이지에 추가
@@ -132,8 +136,8 @@
   		  <select class="size" name="orderOption" id="orderOption">
           <option value=0 selected>아이디 오름차순</option>
           <option value=1>아이디 내림차순</option>
-          <option value="join_date_asc">가입일 오름차순</option>
-          <option value="join_date_desc">가입일 내림차순</option>
+          <option value=2>가입일 오름차순</option>
+          <option value=3>가입일 내림차순</option>
         </select>
   		</div>
   		<div class="adminDiv2" id="tableTitle">
@@ -166,7 +170,6 @@
 							  <td>${m.memberJoinDate}</td>
 						  </tr>
 					  </c:forEach>
-
   			  </tbody>
   			</table>
   		</div>

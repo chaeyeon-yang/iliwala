@@ -75,4 +75,9 @@ public class MemberService implements HanaService<String, MemberDto> {
     public List<MemberDto> orderById(SearchDto searchDto) throws Exception {
         return memberRepository.orderById(searchDto);
     }
+
+    // 회원 정렬 - 가입일
+    public List<MemberDto> orderByRegDate(SearchDto searchDto) throws Exception {
+        return memberRepository.orderByRegDate(searchDto);
+    }
 }
