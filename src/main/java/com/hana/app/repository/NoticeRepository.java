@@ -15,4 +15,5 @@ public interface NoticeRepository extends HanaRepository<Integer, NoticeDto> {
     Integer noticeCnt() throws Exception;
     List<NoticeDto> adminSearchTitle(String text) throws Exception;
     List<NoticeDto> adminSearchContent(String text) throws Exception;
+    List<NoticeDto> adminSearchId(String text) throws Exception;
 }
