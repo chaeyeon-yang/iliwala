@@ -49,7 +49,14 @@
 <div class="top d-none d-md-block">
   <div class="topMenu d-none d-md-block container">
     <span class="home"><a href="index.html">HOME</a></span>
-    <span><a href="<c:url value="/member/login"/>">LOGIN</a></span>
+    <c:choose>
+      <c:when test="${empty memberId}">
+        <span><a href="<c:url value="/member/login"/>">LOGIN</a></span>
+      </c:when>
+      <c:otherwise>
+        <span><a href="<c:url value="/member/logout"/>">LOGOUT</a></span>
+      </c:otherwise>
+    </c:choose>
     <span><a href="<c:url value="/member/join"/>">JOIN</a></span>
     <span><a href="./company/company03.html">CONTACT US</a></span>
   </div>
