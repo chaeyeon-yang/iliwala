@@ -43,7 +43,13 @@
         </if>
     </select>
 
-
+    <select id="orderByRegDate" parameterType="searchDto" resultType="memberDto">
+        SELECT * FROM company_member
+        ORDER BY member_join_date
+        <if test="orderOption == 3">
+            DESC
+        </if>
+    </select>
 
     <insert id="insert" parameterType="memberDto">
         INSERT INTO company_member VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())

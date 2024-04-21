@@ -112,9 +112,19 @@ public class AdminController {
     // 정렬
     @ResponseBody
     @RequestMapping("/orderById")
-    public List<MemberDto> orderById(Model model, @RequestBody SearchDto orderRequest) {
+    public List<MemberDto> orderById(@RequestBody SearchDto orderRequest) {
         try {
             List<MemberDto> memberList = memberService.orderById(orderRequest);
+            return memberList ;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @ResponseBody
+    @RequestMapping("/orderByRegDate")
+    public List<MemberDto> orderByRegDate(@RequestBody SearchDto orderRequest) {
+        try {
+            List<MemberDto> memberList = memberService.orderByRegDate(orderRequest);
             return memberList ;
         } catch (Exception e) {
             throw new RuntimeException(e);
