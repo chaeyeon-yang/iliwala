@@ -192,6 +192,7 @@
 					  </c:forEach>
   			  </tbody>
   			</table>
+			<div class="d-flex justify-content-end"><a href="<c:url value="/admin/writeNotice"/>">공지글 쓰기</a></div>
   		</div>
   	</div>
   </div>

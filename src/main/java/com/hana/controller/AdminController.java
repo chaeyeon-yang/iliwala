@@ -11,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/admin")
 @Controller
@@ -138,5 +136,12 @@ public class AdminController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    // 공지글쓰기
+    @RequestMapping("/writeNotice")
+    public String writeNotice(Model model) {
+        model.addAttribute("center",dir+"writeNotice");
+        return "index";
     }
 }
