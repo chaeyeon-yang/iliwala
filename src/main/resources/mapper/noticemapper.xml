@@ -26,4 +26,7 @@
     <select id="adminSearchTitle" parameterType="String" resultType="noticeDto">
         select * from company_notice where notice_title like lower(concat('%', #{noticeTitle}, '%'))
     </select>
+    <select id="adminSearchContent" parameterType="String" resultType="noticeDto">
+        select * from company_notice where notice_content like lower(concat('%', #{noticeContent}, '%'))
+    </select>
 </mapper>

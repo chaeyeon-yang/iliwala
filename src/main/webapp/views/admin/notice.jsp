@@ -18,8 +18,8 @@
 
         if (searchOption === "title") {
           searchUrl = '<c:url value="/admin/searchTitle"/>';
-        } else if (searchOption === "name") {
-          searchUrl = '<c:url value="/admin/searchName"/>';
+        } else if (searchOption === "content") {
+          searchUrl = '<c:url value="/admin/adminSearchContent"/>';
         } else if (searchOption === "email") {
           searchUrl = '<c:url value="/admin/searchEmail"/>';
         } else {
