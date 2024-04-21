@@ -27,7 +27,7 @@ public class NoticeService implements HanaService<Integer, NoticeDto> {
 
     @Override
     public int modify(NoticeDto noticeDto) throws Exception {
-        return 0;
+        return noticeRepository.update(noticeDto);
     }
 
     @Override

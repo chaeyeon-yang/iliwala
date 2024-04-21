@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/admin")
 @Controller
@@ -238,6 +239,36 @@ public class AdminController {
             return noticeList ;
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    // 공지상세
+    @RequestMapping("/noticeDetail")
+    public String noticeDetail(Model model, @RequestParam("no") Integer no) throws Exception {
+        NoticeDto notice = noticeService.get(no);
+        model.addAttribute("notice", notice);
+        model.addAttribute("center", dir+"modifyNotice");
+        return "index";
+    }
+
+    // 공지수정
+    @ResponseBody
+    @RequestMapping("/modifyNotice")
+    public Integer modifyNotice(@RequestBody Map<String, Object> requestData) throws Exception {
+        try {
+            String noticeContent = (String) requestData.get("noticeContent");
+            Integer idx = (Integer) requestData.get("idx");
+
+            if (noticeContent != null && idx != null) {
+                NoticeDto noticeDto1 = NoticeDto.builder().noticeContent(noticeContent).noticeIdx(idx).build();
+                noticeService.modify(noticeDto1);
+                return 1;
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 }
