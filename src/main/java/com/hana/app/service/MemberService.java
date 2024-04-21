@@ -1,6 +1,7 @@
 package com.hana.app.service;
 
 import com.hana.app.data.dto.MemberDto;
+import com.hana.app.data.dto.PageDto;
 import com.hana.app.data.dto.SearchDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.MemberRepository;
@@ -79,5 +80,9 @@ public class MemberService implements HanaService<String, MemberDto> {
     // 회원 정렬 - 가입일
     public List<MemberDto> orderByRegDate(SearchDto searchDto) throws Exception {
         return memberRepository.orderByRegDate(searchDto);
+    }
+    // 회원 보기
+    public List<MemberDto> page(PageDto pageDto) throws Exception {
+        return memberRepository.page(pageDto);
     }
 }
