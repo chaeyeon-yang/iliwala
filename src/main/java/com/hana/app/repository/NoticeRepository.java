@@ -22,5 +22,5 @@ public interface NoticeRepository extends HanaRepository<Integer, NoticeDto> {
     List<NoticeDto> orderById (Integer option) throws Exception;
     List<NoticeDto> orderByRegDate (Integer option) throws Exception;
     List<NoticeDto> page (PageDto pageDto) throws Exception;
-
+    NoticeDto selectOne(Integer integer) throws Exception;
 }

@@ -94,10 +94,10 @@
 
     notices.forEach(function(n, index) {
       var row = "<tr>" +
-              "<td>" +  (index + 1) + "</td>" +
-              "<td>" + n.noticeTitle + "</td>" +
-              "<td>" + n.noticeMemberId + "</td>" +
-              "<td>" + n.noticeDate + "</td>" +
+              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" +  (index + 1) + "</a></td>" +
+              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeTitle + "</a></td>" +
+              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeMemberId + "</a></td>" +
+              "<td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">" + n.noticeDate + "</a></td>" +
               "</tr>";
       tbody.append(row);
     });
@@ -113,7 +113,7 @@
   <div class="commonSection1">
     <div class="commonContent1">
       <img
-        src="/img/member/sub-visual01.jpg"
+        src="<c:url value="/img/member/sub-visual01.jpg"/>"
         style="width: 100%; height: 100%"
       />
       <div class="commonContent2 text-center">
@@ -121,7 +121,7 @@
           <h3>관리자페이지</h3>
         </div>
         <div>
-          <p><img src="/img/icon-home.png" /> > 관리자페이지</p>
+          <p><img src="<c:url value="/img/icon-home.png" />" /> > 관리자페이지</p>
         </div>
       </div>
     </div>
@@ -184,10 +184,10 @@
             <tbody>
             <c:forEach var="n" items="${notices}" varStatus="loop">
               <tr>
-                <td>${loop.index + 1}</td>
-                <td>${n.noticeTitle}</td>
-                <td>${n.noticeMemberId}</td>
-                <td>${n.noticeDate}</td>
+                <td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">${loop.index + 1}</a></td>
+                <td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">${n.noticeTitle}</a></td>
+                <td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">${n.noticeMemberId}</a></td>
+                <td><a href="<c:url value="/admin/noticeDetail"/>?no=${n.noticeIdx}">${n.noticeDate}</a></td>
               </tr>
             </c:forEach>
             </tbody>
@@ -197,23 +197,3 @@
       </div>
     </div>
   </div>
-
-<!-- 메인 -->
-<!-- COMMON -->
-
-<div class="commonSection1">
-  <div class="commonContent1">
-    <img
-            src="/img/member/sub-visual01.jpg"
-            style="width: 100%; height: 100%"
-    />
-    <div class="commonContent2 text-center">
-      <div>
-        <h3>관리자페이지</h3>
-      </div>
-      <div>
-        <p><img src="/img/icon-home.png" /> > 관리자페이지</p>
-      </div>
-    </div>
-  </div>
-</div>

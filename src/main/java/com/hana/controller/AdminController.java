@@ -240,4 +240,13 @@ public class AdminController {
             throw new RuntimeException(e);
         }
     }
+
+    // 공지수정
+    @RequestMapping("/noticeDetail")
+    public String noticeDetail(Model model, @RequestParam("no") Integer no) throws Exception {
+        NoticeDto notice = noticeService.get(no);
+        model.addAttribute("notice", notice);
+        model.addAttribute("center", dir+"modifyNotice");
+        return "index";
+    }
 }
