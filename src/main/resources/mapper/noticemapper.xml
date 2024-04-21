@@ -18,8 +18,7 @@
     <insert id="insert" parameterType="noticeDto">
         insert into company_notice values (0, #{noticeTitle}, #{noticeContent}, #{noticeMemberId}, NOW())
     </insert>
-
-<!--    <delete id="delete" parameterType="Integer">-->
-<!--        DELETE FROM company_notice WHERE member_id=#{memberId}-->
-<!--    </delete>-->
+    <select id="noticeCnt" resultType="Integer">
+        SELECT count(*) FROM company_notice;
+    </select>
 </mapper>

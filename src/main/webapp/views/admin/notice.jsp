@@ -62,7 +62,7 @@
             </select>
           </div>
           <div class="adminDiv2" id="tableTitle">
-            <div>목록 ${memberCnt}건</div>
+            <div>목록 ${noticeCnt}건</div>
             <div>한페이지 행수
               <select class="size" name="pageOption" id="pageOption">
                 <option value="" selected>전체 보기</option>

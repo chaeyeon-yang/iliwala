@@ -160,7 +160,9 @@ public class AdminController {
     @RequestMapping("/notice")
     public String notice(Model model) throws Exception {
         List<NoticeDto> list = noticeService.get();
+        Integer noticeCnt = noticeService.noticeCnt();
         model.addAttribute("notices", list);
+        model.addAttribute("noticeCnt", noticeCnt);
         model.addAttribute("center",dir+"notice");
         return "index";
     }

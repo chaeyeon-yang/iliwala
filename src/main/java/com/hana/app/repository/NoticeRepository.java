@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper
 public interface NoticeRepository extends HanaRepository<Integer, NoticeDto> {
     List<NoticeDto> searchTitle(String text) throws Exception;
-
     List<NoticeDto> searchContent(String text) throws Exception;
+    Integer noticeCnt() throws Exception;
+
 }
