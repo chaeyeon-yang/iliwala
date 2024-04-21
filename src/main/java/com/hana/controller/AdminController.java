@@ -219,4 +219,14 @@ public class AdminController {
             throw new RuntimeException(e);
         }
     }
+    @ResponseBody
+    @RequestMapping("/noticeOrderByRegDate")
+    public List<NoticeDto> noticeOrderByRegDate(@RequestParam("orderOption") Integer option) {
+        try {
+            List<NoticeDto> noticeList = noticeService.orderByRegDate(option);
+            return noticeList ;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

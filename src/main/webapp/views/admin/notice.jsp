@@ -52,7 +52,7 @@
       if (orderOption === "0" || orderOption === "1") {
         url = "/admin/noticeOrderById";
       } else if (orderOption === "2" || orderOption === "3") {
-        url = "/admin/orderByRegDate";
+        url = "/admin/noticeOrderByRegDate";
       }
 
       $.ajax({
