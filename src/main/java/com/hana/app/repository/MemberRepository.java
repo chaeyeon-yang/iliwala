@@ -1,6 +1,7 @@
 package com.hana.app.repository;
 
 import com.hana.app.data.dto.MemberDto;
+import com.hana.app.data.dto.PageDto;
 import com.hana.app.data.dto.SearchDto;
 import com.hana.app.frame.HanaRepository;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,4 +21,5 @@ public interface MemberRepository extends HanaRepository<String, MemberDto> {
     List<MemberDto> searchAll(String text) throws Exception;
     List<MemberDto> orderById(SearchDto searchDto) throws Exception;
     List<MemberDto> orderByRegDate(SearchDto searchDto) throws Exception;
+    List<MemberDto> page(PageDto pageDto) throws Exception;
 }

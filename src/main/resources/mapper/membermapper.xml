@@ -51,6 +51,33 @@
         </if>
     </select>
 
+    <select id="page" parameterType="pageDto" resultType="MemberDto">
+        SELECT *
+        FROM company_member
+        <choose>
+            <when test="orderOption != null and (orderOption == 0 or orderOption == 1)">
+                ORDER BY member_id
+                <if test="orderOption == 1">
+                    DESC
+                </if>
+            </when>
+            <when test="orderOption != null and (orderOption == 2 or orderOption == 3)">
+                ORDER BY member_join_date
+                <if test="orderOption == 3">
+                    DESC
+                </if>
+            </when>
+        </choose>
+        <choose>
+            <when test="pageOption != null and pageOption=='page5'">
+                limit 5
+            </when>
+            <when test="pageOption != null and pageOption=='page10'">
+                limit 10
+            </when>
+        </choose>
+    </select>
+
     <insert id="insert" parameterType="memberDto">
         INSERT INTO company_member VALUES (0, #{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate}, NOW())
     </insert>

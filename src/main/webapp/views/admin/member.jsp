@@ -40,6 +40,9 @@
 			$("#orderOption").change(() => {
 				memberManage.sortMembers();
 			});
+			$("#pageOption").change(() => {
+				memberManage.pageMembers();
+			});
 		},
 		sortMembers: function () {
 			let orderOption = $("select[name='orderOption'] option:selected").val();
@@ -64,8 +67,24 @@
 					console.error("정렬 에러 발생: ", err);
 				}
 			});
-		}
+		},
+		pageMembers: function () {
+			let orderOption = $("select[name='orderOption'] option:selected").val();
+			let pageOption = $("select[name='pageOption'] option:selected").val();
 
+			$.ajax({
+				url: "/admin/page",
+				type: "POST",
+				contentType: "application/json",
+				data: JSON.stringify({ orderOption: orderOption, pageOption: pageOption }),
+				success: function(response) {
+					updateTable(response);
+				},
+				error: function(err) {
+					console.error("보기 에러 발생: ", err);
+				}
+			});
+		}
 	};
 	$(function () {
 		memberManage.init();
@@ -143,8 +162,9 @@
   		<div class="adminDiv2" id="tableTitle">
   		  <div>회원목록 ${memberCnt}건</div>
   		  <div>한페이지 행수
-	  		  <select class="size" name="page_select" id="page_select">
-	          <option value="page10" selected>5개만 보기</option>
+	  		  <select class="size" name="pageOption" id="pageOption">
+	          <option value="" selected>전체 보기</option>
+	          <option value="page5">5개만 보기</option>
 	          <option value="page10">10개만 보기</option>
 	        </select>
   		  </div>

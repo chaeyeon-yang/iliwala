@@ -1,10 +1,7 @@
 package com.hana.controller;
 
 
-import com.hana.app.data.dto.AdminDto;
-import com.hana.app.data.dto.MemberDto;
-import com.hana.app.data.dto.NoticeDto;
-import com.hana.app.data.dto.SearchDto;
+import com.hana.app.data.dto.*;
 import com.hana.app.service.AdminService;
 import com.hana.app.service.MemberService;
 import jakarta.servlet.http.HttpSession;
@@ -125,6 +122,18 @@ public class AdminController {
     public List<MemberDto> orderByRegDate(@RequestBody SearchDto orderRequest) {
         try {
             List<MemberDto> memberList = memberService.orderByRegDate(orderRequest);
+            return memberList;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // 보기
+    @ResponseBody
+    @RequestMapping("/page")
+    public List<MemberDto> page(@RequestBody PageDto pageDto) {
+        try {
+            List<MemberDto> memberList = memberService.page(pageDto);
             return memberList ;
         } catch (Exception e) {
             throw new RuntimeException(e);
